@@ -3,8 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  flex-wrap: wrap;
+
+  margin: 0 5%;
+}
 
 .main {
+  height: 100vh;
   display: grid;
   grid-template-columns: auto auto;
 }
@@ -19,10 +25,8 @@
   grid-column-end: 3;
 }
 
-.left .right {
-  height: 100px;
+.left,
+.right {
   background-color: lightblue;
   border: 1px solid black;
-  margin: 10px;
-  width: 200px;
 }
