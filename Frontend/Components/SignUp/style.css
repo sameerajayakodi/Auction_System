@@ -1,35 +1,162 @@
-* {
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f3f4f6, #e3e3e3);
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-body {
-  flex-wrap: wrap;
-
-  margin: 0 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .main {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
+  max-width: 900px;
+  width: 100%;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .left {
-  grid-column-start: 0;
-  grid-column-end: 2;
+  width: 50%;
+  padding: 40px;
+  background-color: #f7f7f7;
 }
 
 .right {
-  grid-column-start: 2;
-  grid-column-end: 3;
+  width: 50%;
+  background: url("background-image.jpg") no-repeat center center;
+  background-size: cover;
 }
 
-.left,
-.right {
+.login-form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.logo-desktop {
+  display: block;
+  margin: 0 auto 20px auto;
+  width: 100px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.options label {
+  font-size: 14px;
+  color: #555;
+}
+
+.options .forgot-password {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.options .forgot-password:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #777;
+}
+
+.line hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 0 10px;
+}
+
+.google-sign-in {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: lightblue;
-  border: 1px solid black;
+}
+
+.google-sign-in img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.google-sign-in:hover {
+  background-color: #f1f1f1;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+p a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
 }
