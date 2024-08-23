@@ -31,8 +31,10 @@ body {
   justify-content: center;
   display: flex;
   width: 50%;
+  background: linear-gradient(90deg, #0067d4, #0056b3);
 }
 .heading {
+  color: white;
   padding: 1rem;
   text-align: center;
   font-size: 28px;
@@ -119,7 +121,7 @@ h2 {
   background-color: #333;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -134,7 +136,7 @@ h2 {
   display: flex;
   align-items: center;
   margin: 20px 0;
-  color: #777;
+  color: black;
 }
 
 .line hr {
