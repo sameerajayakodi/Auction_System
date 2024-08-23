@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #f3f4f6, #e3e3e3);
+
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,28 +10,32 @@ body {
 }
 
 .main {
+  background: linear-gradient(90deg, #849dff92, #cff8ff88);
   display: flex;
   max-width: 900px;
   width: 100%;
-  background: white;
+
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  border-radius: 1rem;
   overflow: hidden;
 }
 
 .left {
   width: 50%;
   padding: 40px;
-  background-color: #f7f7f7;
+
   box-sizing: border-box;
 }
 
 .right {
+  justify-content: center;
+  align-items: center;
+  display: flex;
   width: 50%;
 }
 
-.right > img{
-  
+.right > img {
+  width: 450px;
 }
 
 .login-form {
@@ -154,6 +158,7 @@ h2 {
 }
 
 p {
+  font-size: smaller;
   text-align: center;
   margin-top: 20px;
 }
