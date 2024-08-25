@@ -7,81 +7,78 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="flex items-center justify-center min-h-screen bg-gray-50">
-      <div class="w-full max-w-md p-6 space-y-8 bg-white shadow-md rounded-lg">
-        <h2 class="text-2xl font-bold text-center text-gray-900">Sign Up</h2>
-        <form
-          x-data="{ email: '', password: '', repassword: '' }"
-          @submit.prevent
-          class="space-y-6"
-        >
-          <div>
-            <label class="block text-sm font-medium text-gray-700">Email</label>
-            <input
-              x-model="email"
-              type="email"
-              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              required
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700"
-              >Password</label
-            >
-            <input
-              x-model="password"
-              type="password"
-              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              required
-            />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700"
-              >Re-enter Password</label
-            >
-            <input
-              x-model="repassword"
-              type="password"
-              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-              required
-            />
-          </div>
+    <div class="max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg">
+      <h2 class="text-2xl font-bold mb-6 text-gray-800">Sign Up</h2>
+      <form>
+        <div class="mb-4">
+          <label
+            for="email"
+            class="block text-sm font-medium text-gray-700 mb-2"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="email"
+            class="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="password"
+            class="block text-sm font-medium text-gray-700 mb-2"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="password"
+            class="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <div class="mb-6">
+          <label
+            for="repassword"
+            class="block text-sm font-medium text-gray-700 mb-2"
+            >Re-enter Password</label
+          >
+          <input
+            type="password"
+            id="repassword"
+            class="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Re-enter your password"
+            required
+          />
+        </div>
+        <div class="mb-4">
           <button
             type="submit"
-            class="w-full py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
           >
-            Create Account
-          </button>
-        </form>
-        <div class="text-center text-sm text-gray-600">Or sign up with</div>
-        <div class="flex justify-between">
-          <button
-            class="flex items-center justify-center w-full py-2 mr-2 bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <svg
-              class="w-5 h-5 text-white"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path
-                d="M22.675 0H1.326C.593 0 0 .592 0 1.326v21.349C0 23.406.592 24 1.326 24H12.82v-9.293H9.692v-3.622h3.127V7.414c0-3.1 1.892-4.788 4.66-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.622h-3.123V24H22.67A1.326 1.326 0 0024 22.675V1.327A1.325 1.325 0 0022.675 0z"
-              />
-            </svg>
-          </button>
-          <button
-            class="flex items-center justify-center w-full py-2 ml-2 bg-red-600 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500"
-          >
-            <svg
-              class="w-5 h-5 text-white"
-              viewBox="0 0 48 48"
-              fill="currentColor"
-            >
-              <path
-                d="M24 9.5c3.68 0 5.98 1.588 7.36 2.963L35.8 8.2C33.35 6.013 29.79 4 24 4 15.5 4 8.62 8.605 6 16h6.88C14 12.335 18.17 9.5 24 9.5zM24 46c-5.79 0-9.35-2.013-11.8-3.8l-4.44 4.263C14.02 47.412 18.32 50 24 50c8.5 0 15.38-3.605 18-11h-6.88C38 43.665 33.83 46 24 46zM24 24c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0 4c-8.5 0-15.38 3.605-18 11h6.88C18 35.665 22.17 32.5 24 32.5s6-3.165 7.12-5.5H6c2.62-7.395 9.5-12 18-12 5.79 0 9.35 2.013 11.8 3.8l4.44-4.262C38.02 8.588 33.68 6 28 6c-8.5 0-15.38 3.605-18 11h6.88C14 20.335 18.17 23.5 24 23.5z"
-              />
-            </svg>
+            Sign Up
           </button>
         </div>
+      </form>
+      <div class="flex justify-between items-center mt-4">
+        <hr class="w-full border-gray-300" />
+        <span class="px-2 text-gray-500">or</span>
+        <hr class="w-full border-gray-300" />
+      </div>
+      <div class="mt-4">
+        <button
+          class="w-full bg-gray-100 text-gray-800 py-2 rounded-md flex items-center justify-center hover:bg-gray-200 mb-2"
+        >
+          <img src="google-logo.png" alt="Google" class="h-5 w-5 mr-2" />
+          Sign Up with Google
+        </button>
+        <button
+          class="w-full bg-blue-800 text-white py-2 rounded-md flex items-center justify-center hover:bg-blue-900"
+        >
+          <img src="facebook-logo.png" alt="Facebook" class="h-5 w-5 mr-2" />
+          Sign Up with Facebook
+        </button>
       </div>
     </div>
   </body>
