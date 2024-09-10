@@ -6,11 +6,11 @@ import ManageAuctions from "./admin/ManageAuctions"; // Admin manage auctions pa
 import ManageUsers from "./admin/ManageUsers";
 import AuctionDetail from "./AuctionDetail";
 import AuctionListing from "./AuctionListing";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
 import Navbar from "./components/Navbar";
 import Home from "./Home";
-import Login from "./Login";
 import Profile from "./Profile";
-import Signup from "./Signup";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
           <Route path="/auctions/:id" element={<AuctionDetail />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/admin/*" element={<AdminDashboard />}>
             <Route path="manage-auctions" element={<ManageAuctions />} />
             <Route path="manage-users" element={<ManageUsers />} />

@@ -6,38 +6,44 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="bg-gray-800 p-4">
-      <div className="container mx-auto flex items-center justify-between">
-        <h1 className="text-white text-2xl font-bold">Auction House</h1>
-        <div className="hidden md:flex space-x-4">
+    <nav className="p-4 bg-gray-800">
+      <div className="container flex items-center justify-between mx-auto">
+        <h1 className="text-2xl font-bold text-white">Auction House</h1>
+        <div className="hidden space-x-4 md:flex">
           <Link
             to="/"
-            className="text-white hover:bg-gray-700 px-3 py-2 rounded"
+            className="px-3 py-2 text-white rounded hover:bg-gray-700"
           >
             Home
           </Link>
           <Link
             to="/auctions"
-            className="text-white hover:bg-gray-700 px-3 py-2 rounded"
+            className="px-3 py-2 text-white rounded hover:bg-gray-700"
           >
             Auctions
           </Link>
           <Link
             to="/profile"
-            className="text-white hover:bg-gray-700 px-3 py-2 rounded"
+            className="px-3 py-2 text-white rounded hover:bg-gray-700"
           >
             Profile
           </Link>
           <Link
             to="/login"
-            className="text-white hover:bg-gray-700 px-3 py-2 rounded"
+            className="px-3 py-2 text-white rounded hover:bg-gray-700"
           >
             Login
+          </Link>
+          <Link
+            to="/register"
+            className="px-3 py-2 text-white rounded hover:bg-gray-700"
+          >
+            Sign Up
           </Link>
         </div>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white"
+          className="text-white md:hidden"
         >
           {isOpen ? (
             <XMarkIcon className="w-6 h-6" />
@@ -49,27 +55,33 @@ const Navbar = () => {
       <div className={`md:hidden ${isOpen ? "block" : "hidden"} mt-4`}>
         <Link
           to="/"
-          className="block text-white hover:bg-gray-700 px-3 py-2 rounded"
+          className="block px-3 py-2 text-white rounded hover:bg-gray-700"
         >
           Home
         </Link>
         <Link
           to="/auctions"
-          className="block text-white hover:bg-gray-700 px-3 py-2 rounded"
+          className="block px-3 py-2 text-white rounded hover:bg-gray-700"
         >
           Auctions
         </Link>
         <Link
           to="/profile"
-          className="block text-white hover:bg-gray-700 px-3 py-2 rounded"
+          className="block px-3 py-2 text-white rounded hover:bg-gray-700"
         >
           Profile
         </Link>
         <Link
           to="/login"
-          className="block text-white hover:bg-gray-700 px-3 py-2 rounded"
+          className="block px-3 py-2 text-white rounded hover:bg-gray-700"
         >
           Login
+        </Link>
+        <Link
+          to="/register"
+          className="block px-3 py-2 text-white rounded hover:bg-gray-700"
+        >
+          Sign Up
         </Link>
       </div>
     </nav>
