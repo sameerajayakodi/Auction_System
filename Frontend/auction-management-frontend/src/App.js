@@ -1,13 +1,14 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import AddAuction from "./AddAuction";
+import AdminDashboard from "./admin/AdminDashboard"; // The admin dashboard with sidebar
+import EditUser from "./admin/EditUser";
+import ManageAuctions from "./admin/ManageAuctions"; // Admin manage auctions page
+import ManageUsers from "./admin/ManageUsers";
 import AuctionDetail from "./AuctionDetail";
 import AuctionListing from "./AuctionListing";
 import Navbar from "./components/Navbar";
-import EditAuction from "./EditAuction";
 import Home from "./Home";
 import Login from "./Login";
-import ManageAuctions from "./ManageAuctions";
 import Profile from "./Profile";
 import Signup from "./Signup";
 
@@ -23,11 +24,11 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-
-          {/* Admin routes without protection */}
-          <Route path="/admin/auctions" element={<ManageAuctions />} />
-          <Route path="/admin/add-auction" element={<AddAuction />} />
-          <Route path="/admin/edit-auction/:id" element={<EditAuction />} />
+          <Route path="/admin/*" element={<AdminDashboard />}>
+            <Route path="manage-auctions" element={<ManageAuctions />} />
+            <Route path="manage-users" element={<ManageUsers />} />
+            <Route path="edit-user/:userId" element={<EditUser />} />
+          </Route>
         </Routes>
       </div>
     </Router>
