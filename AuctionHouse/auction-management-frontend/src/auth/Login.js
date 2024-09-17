@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import blackLogo from "../images/blackLogo.png";
 import facebookLogo from "../images/facebook.png";
 import googleLogo from "../images/google.png";
-import loginImage from "../images/loginImage.jpg";
+import antiqueVase from "../images/vase.jpg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -98,9 +98,9 @@ const Login = () => {
 
         <div className="hidden w-full md:block md:w-2/3">
           <img
-            src={loginImage}
+            src={antiqueVase}
             alt="Login visual"
-            className="object-cover w-full h-full"
+            className="w-full h-full "
           />
         </div>
       </div>
