@@ -42,7 +42,7 @@ const AuctionDetail = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-100 to-gray-300 md:w-screen">
-      <div className="flex flex-col  h-full bg-white rounded-none shadow-2xl md:grid md:grid-cols-2 md:h-screen">
+      <div className="flex flex-col h-full bg-white rounded-none shadow-2xl md:grid md:grid-cols-2 md:h-screen">
         {/* Top Section - Auction Image (will stack on mobile) */}
         <div className="w-full md:h-full">
           <img
@@ -57,13 +57,13 @@ const AuctionDetail = () => {
           <h2 className="mb-4 text-3xl font-bold text-center text-gray-800">
             {auction.title}
           </h2>
-          <p className="text-gray-600 text-center mb-4">
+          <p className="mb-4 text-center text-gray-600">
             {auction.description}
           </p>
-          <p className="text-2xl font-semibold text-yellow-500 text-center mb-4">
+          <p className="mb-4 text-2xl font-semibold text-center text-yellow-500">
             ${auction.currentBid}
           </p>
-          <p className="text-lg text-center mb-4">Ends in: {auction.endTime}</p>
+          <p className="mb-4 text-lg text-center">Ends in: {auction.endTime}</p>
 
           <div className="flex justify-center mb-4">
             <input
@@ -82,7 +82,7 @@ const AuctionDetail = () => {
             Place Bid
           </button>
 
-          <div className="flex justify-center space-x-4 mb-4">
+          <div className="flex justify-center mb-4 space-x-4">
             <button className="w-1/2 px-4 py-2 text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700">
               Add to Cart
             </button>
