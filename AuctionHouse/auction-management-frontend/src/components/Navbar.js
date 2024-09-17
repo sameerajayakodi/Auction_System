@@ -1,43 +1,42 @@
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import whiteLogo from "../images/whiteLogo.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="p-4 bg-gray-800">
+    <nav className="px-6 bg-gray-100">
       <div className="container flex items-center justify-between mx-auto">
-        <img src={whiteLogo} width={200} />
+        <h2 className="text-2xl font-bold text-gray-800">ActionHouse.lk</h2>
         <div className="hidden space-x-4 md:flex">
           <Link
             to="/"
-            className="px-3 py-2 text-white rounded hover:bg-gray-700"
+            className="px-3 py-2 text-black rounded hover:bg-gray-700 hover:text-white"
           >
             Home
           </Link>
           <Link
             to="/auctions"
-            className="px-3 py-2 text-white rounded hover:bg-gray-700"
+            className="px-3 py-2 text-black rounded hover:bg-gray-700 hover:text-white"
           >
             Auctions
           </Link>
           <Link
             to="/profile"
-            className="px-3 py-2 text-white rounded hover:bg-gray-700"
+            className="px-3 py-2 text-black rounded hover:bg-gray-700 hover:text-white"
           >
             Profile
           </Link>
           <Link
             to="/login"
-            className="px-3 py-2 text-white rounded hover:bg-gray-700"
+            className="px-3 py-2 text-black rounded hover:bg-gray-700 hover:text-white"
           >
             Login
           </Link>
           <Link
             to="/register"
-            className="px-3 py-2 text-white rounded hover:bg-gray-700"
+            className="px-3 py-2 text-black rounded hover:bg-gray-700 hover:text-white"
           >
             Sign Up
           </Link>
