@@ -1,5 +1,4 @@
 import React from "react";
-import { FaGavel } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const AuctionCard = ({ auction }) => {
@@ -11,31 +10,38 @@ const AuctionCard = ({ auction }) => {
   };
 
   return (
-    <div className="overflow-hidden transition-transform duration-200 ease-in-out transform bg-white shadow-xl hover:scale-105 hover:shadow-xl">
-      <div className="relative">
-        <img src={image} alt={title} className="object-cover w-full h-52 " />
-        <span className="absolute px-2 py-1 text-xs font-semibold text-white bg-yellow-500 rounded-md shadow-lg top-4 left-4">
+    <div className="w-full h-full py-2 transform border-gray-300 border-y border-x ">
+      <div className="relative p-2">
+        {/* Image Section */}
+        <img src={image} alt={title} className="object-cover w-full h-full" />
+        {/* End Date Badge */}
+        <span className="absolute px-3 py-1 text-xs font-semibold text-white bg-red-600 rounded-full shadow-md top-2 right-2">
           Ends in: {endDate}
         </span>
       </div>
-      <div className="p-6">
-        <h3 className="mb-2 text-xl font-semibold text-gray-900">{title}</h3>
-        <p className="mb-4 text-sm text-gray-600 line-clamp-3">{description}</p>
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <p className="text-sm text-gray-500">Current Bid</p>
-            <p className="text-2xl font-bold text-green-600">${currentBid}</p>
-          </div>
-          <div className="flex items-center space-x-2 text-gray-500">
-            <FaGavel className="text-xl text-blue-500" />
-            <span className="text-sm font-medium">Place your bid now</span>
-          </div>
+
+      {/* Content Section */}
+      <div className="px-2 text-center bg-white ">
+        {/* Title */}
+        <h3 className="font-bold text-gray-800 text-md">{title}</h3>
+
+        {/* Description */}
+        <p className="mb-2 text-xs text-gray-500 line-clamp-2">{description}</p>
+
+        {/* Current Bid */}
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm text-gray-400">Current Bid:</span>
+          <span className="text-xl font-semibold text-green-600">
+            ${currentBid}
+          </span>
         </div>
+
+        {/* Place Bid Button */}
         <button
           onClick={handlePlaceBid}
-          className="w-full px-4 py-3 font-semibold text-white transition-colors duration-300 ease-in-out rounded-lg bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+          className="px-5 py-2 mb-2 text-sm font-medium text-center text-gray-900 border border-gray-800 rounded-lg hover:text-white hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 me-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-black dark:focus:ring-gray-800"
         >
-          Place Bid
+          Place your bid now
         </button>
       </div>
     </div>
