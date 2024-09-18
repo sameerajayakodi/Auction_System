@@ -84,7 +84,7 @@ const AuctionCard = ({ auction }) => {
         <img
           src={image}
           alt={title}
-          className="object-cover w-full h-full border rounded-t-lg"
+          className="object-cover w-full h-full border "
         />
         {/* End Date Badge */}
         <span
