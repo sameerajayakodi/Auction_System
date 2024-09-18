@@ -32,8 +32,11 @@ const Navbar = () => {
             >
               <UserIcon className="w-5" />
             </Link>
-            <div className="flex bg-gray-200">
-              <Link to="/login" className="flex items-center text-sm ">
+            <div className="flex p-2">
+              <Link
+                to="/login"
+                className="flex items-center text-sm font-semibold text-black hover:underline "
+              >
                 Login / Register
               </Link>
             </div>
