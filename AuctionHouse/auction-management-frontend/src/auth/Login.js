@@ -13,8 +13,10 @@ const Login = () => {
   return (
     <div className="flex ">
       <div className="flex flex-col w-full h-screen rounded-none md:flex-row ">
-        <div className="flex flex-col justify-center w-full p-10 md:w-1/3">
-          <h2 className="mb-4 text-2xl font-bold text-center">Sign In</h2>
+        <div className="flex flex-col justify-center w-full p-10 bg-gray-200 md:w-1/3">
+          <h2 className="mb-4 text-2xl font-bold text-center">
+            Login to your account
+          </h2>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
