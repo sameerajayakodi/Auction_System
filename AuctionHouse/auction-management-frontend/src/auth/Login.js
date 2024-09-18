@@ -13,7 +13,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r">
-      <div className="flex flex-col w-full h-screen overflow-hidden rounded-none shadow-2xl bg-slate-100 md:flex-row ">
+      <div className="flex flex-col w-full h-screen rounded-none md:flex-row ">
         <div className="flex flex-col justify-center w-full p-10 md:w-1/3">
           <h2 className="mb-4 text-2xl font-bold text-center">
             <img
@@ -54,7 +54,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full px-4 py-1 text-white bg-gray-600 rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+              className="w-full px-4 py-1 text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
             >
               Sign In
             </button>
