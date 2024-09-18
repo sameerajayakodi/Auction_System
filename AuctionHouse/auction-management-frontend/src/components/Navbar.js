@@ -20,23 +20,23 @@ const Navbar = () => {
       </div>
       <nav className="px-6 py-2 bg-white">
         <div className="container flex items-center justify-between mx-auto">
-          <h2 className="text-2xl font-bold text-gray-800">ActionHouse.lk</h2>
+          <h2 className="text-xl font-bold text-gray-800">ActionHouse.lk</h2>
           <div className="hidden space-x-4 md:flex">
             <Link
               to="/"
-              className="flex items-center p-2 text-sm font-semibold text-center text-gray-500 hover:bg-gray-100 "
+              className="flex items-center p-2 text-sm font-semibold text-center text-gray-500 hover:bg-gray-100"
             >
               <HomeIcon className="w-6 mr-1" />
             </Link>
             <Link
               to="/auctions"
-              className="flex items-center p-2 text-sm font-semibold text-black text-gray-500 rounded hover:bg-gray-100 "
+              className="flex items-center p-2 text-sm font-semibold text-gray-500 rounded hover:bg-gray-100 "
             >
               <TagIcon className="w-6 mr-1" />
             </Link>
             <Link
               to="/profile"
-              className="flex items-center p-2 text-sm font-semibold text-black text-gray-500 rounded hover:bg-gray-100"
+              className="flex items-center p-2 text-sm font-semibold text-gray-500 rounded hover:bg-gray-100"
             >
               <UserIcon className="w-6 mr-1" />
             </Link>
