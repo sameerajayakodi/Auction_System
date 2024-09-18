@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import blackLogo from "../images/blackLogo.png";
 import antiqueVase from "../images/vase.jpg";
 
 const Login = () => {
@@ -12,18 +11,10 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r">
+    <div className="flex ">
       <div className="flex flex-col w-full h-screen rounded-none md:flex-row ">
         <div className="flex flex-col justify-center w-full p-10 md:w-1/3">
-          <h2 className="mb-4 text-2xl font-bold text-center">
-            <img
-              src={blackLogo}
-              width={250}
-              className="m-auto my-2"
-              alt="Logo"
-            />
-            Sign In
-          </h2>
+          <h2 className="mb-4 text-2xl font-bold text-center">Sign In</h2>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
