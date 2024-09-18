@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import antiqueVase from "../images/vase.jpg";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,10 +12,10 @@ const Login = () => {
   return (
     <div className="flex ">
       <div className="flex flex-col w-full h-screen rounded-none md:flex-row ">
-        <div className="flex flex-col justify-center w-full p-10 bg-gray-200 md:w-1/3">
-          <h2 className="mb-4 text-2xl font-bold text-center">
+        <div className="flex flex-col justify-center w-full p-16 border-2 md:w-2/5">
+          <p className="mb-4 text-xl font-bold text-center">
             Login to your account
-          </h2>
+          </p>
 
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
@@ -67,11 +66,11 @@ const Login = () => {
         </div>
 
         <div className="hidden w-full md:block md:w-2/3">
-          <img
+          {/* <img
             src={antiqueVase}
             alt="Login visual"
-            className="w-full h-full "
-          />
+            className="object-cover w-full h-screen"
+          /> */}
         </div>
       </div>
     </div>
