@@ -13,7 +13,7 @@ const Login = () => {
     <div className="flex items-start justify-center w-full h-screen mt-4">
       <div className="flex flex-col w-full h-full p-16 md:w-2/5 md:h-auto">
         <p className="mb-4 text-xl font-bold text-center">
-          Welcome back to Auctions!
+          Welcome back to Auctions
         </p>
 
         <form onSubmit={handleSubmit}>
