@@ -76,7 +76,7 @@ const Register = () => {
             type="submit"
             className="w-full px-4 py-1 text-sm text-white bg-gray-600 hover:bg-gray-800"
           >
-            Register Account
+            Register your account
           </button>
         </form>
 
