@@ -58,7 +58,7 @@ const Login = () => {
               to="/register"
               className="font-semibold text-gray-600 transition-colors duration-200 hover:text-black"
             >
-              Sign up
+              Register
             </Link>
           </p>
         </div>
