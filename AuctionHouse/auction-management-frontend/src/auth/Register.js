@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import blackLogo from "../images/blackLogo.png";
-import facebookLogo from "../images/facebook.png";
-import googleLogo from "../images/google.png";
 import registerImage from "../images/registerImage.jpg";
 
 const Register = () => {
@@ -28,28 +25,8 @@ const Register = () => {
 
         <div className="flex flex-col justify-center w-full h-full p-6 md:w-1/3">
           <h2 className="mb-4 text-2xl font-bold text-center text-gray-800">
-            <img
-              src={blackLogo}
-              width={250}
-              className="m-auto my-2"
-              alt="Logo"
-            />
             Register
           </h2>
-
-          <button className="flex items-center justify-center w-full px-3 py-2 mb-2 text-white bg-black border border-gray-300 rounded-lg hover:bg-gray-700">
-            <img src={googleLogo} alt="Google logo" className="w-5 h-5 mr-2" />
-            Register with Google
-          </button>
-
-          <button className="flex items-center justify-center w-full px-3 py-2 mb-3 text-white bg-[#1877F2] border border-gray-300 rounded-lg hover:bg-white hover:text-black">
-            <img
-              src={facebookLogo}
-              alt="Facebook logo"
-              className="w-5 h-5 mr-2"
-            />
-            Register with Facebook
-          </button>
 
           <div className="relative mb-4 text-center">
             <div className="absolute inset-0 flex items-center">
@@ -60,7 +37,7 @@ const Register = () => {
 
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-xs font-medium text-gray-700">
                 Email
               </label>
               <input
