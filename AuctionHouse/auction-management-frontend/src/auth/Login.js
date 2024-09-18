@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import blackLogo from "../images/blackLogo.png";
-import facebookLogo from "../images/facebook.png";
-import googleLogo from "../images/google.png";
 import antiqueVase from "../images/vase.jpg";
 
 const Login = () => {
@@ -27,27 +25,6 @@ const Login = () => {
             Sign In
           </h2>
 
-          <button className="flex items-center justify-center w-full px-3 py-2 mb-2 text-white bg-gray-800 border border-gray-300 rounded-lg hover:bg-black">
-            <img src={googleLogo} alt="Google logo" className="w-5 h-5 mr-2" />
-            Sign in with Google
-          </button>
-
-          <button className="flex items-center justify-center w-full px-3 py-2 mb-3 text-white bg-indigo-700 border border-gray-300 rounded-lg hover:bg-indigo-800 hover:text-white">
-            <img
-              src={facebookLogo}
-              alt="Facebook logo"
-              className="w-5 h-5 mr-2"
-            />
-            Sign in with Facebook
-          </button>
-
-          <div className="relative mb-4 text-center">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
-            <div className="relative px-2 text-gray-500 bg-slate-100">or</div>
-          </div>
-
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label className="block text-sm font-medium text-gray-700">
@@ -57,7 +34,7 @@ const Login = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="block w-full px-3 py-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="block w-full px-3 py-1 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter your email"
                 required
               />
