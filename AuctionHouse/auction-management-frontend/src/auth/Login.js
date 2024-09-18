@@ -14,7 +14,7 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r">
       <div className="flex flex-col w-full h-screen overflow-hidden rounded-none shadow-2xl bg-slate-100 md:flex-row ">
-        <div className="flex flex-col justify-center w-full p-6 md:w-1/3">
+        <div className="flex flex-col justify-center w-full p-10 md:w-1/3">
           <h2 className="mb-4 text-2xl font-bold text-center">
             <img
               src={blackLogo}
@@ -47,7 +47,7 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block w-full px-3 py-3 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="block w-full px-3 py-1 mt-1 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 placeholder="Enter your password"
                 required
               />
