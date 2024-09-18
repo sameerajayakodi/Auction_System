@@ -40,14 +40,14 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block w-full px-3 py-2 mt-1 text-xs border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-gray-600"
+                className="block w-full px-3 py-2 mt-1 text-xs border border-gray-300 focus:border-gray-600"
                 placeholder="Enter your password"
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full px-4 py-1 text-white bg-gray-600 rounded-lg shadow-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
+              className="w-full px-4 py-1 text-white bg-gray-600 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
             >
               Sign In
             </button>
@@ -58,7 +58,7 @@ const Login = () => {
               Don’t have an account?{" "}
               <Link
                 to="/register"
-                className="font-semibold text-indigo-600 transition-colors duration-200 hover:text-indigo-800"
+                className="font-semibold text-gray-600 transition-colors duration-200 hover:text-black"
               >
                 Sign up
               </Link>
