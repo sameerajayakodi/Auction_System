@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ConfirmationModal from "../src/components/ConfirmationModal"; // Import the modal
+import Notification from "../src/components/Notification"; // Import the notification component
 import BidHistory from "./BidHistory";
 import ChairImage from "./images/yellowChair.jpg"; // Make sure the path is correct
 
@@ -7,6 +9,8 @@ const AuctionDetail = () => {
   const { id } = useParams();
   const [auction, setAuction] = useState(null);
   const [bidAmount, setBidAmount] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [notification, setNotification] = useState(""); // Notification state
 
   // Mock auction data
   const mockAuctionData = {
@@ -33,9 +37,26 @@ const AuctionDetail = () => {
         ...prevAuction,
         currentBid: prevAuction.currentBid + Number(bidAmount),
       }));
-      alert("Bid placed successfully!");
+      setNotification("Bid placed successfully!"); // Show success notification
       setBidAmount(""); // Clear the bid amount input
     }, 500); // Simulate a delay of 0.5 seconds
+  };
+
+  const handlePlaceBid = () => {
+    setIsModalOpen(true); // Open modal when the "Place Bid" button is clicked
+  };
+
+  const handleConfirmBid = () => {
+    setIsModalOpen(false); // Close modal after confirmation
+    placeBid(); // Proceed with placing the bid
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Close modal without placing bid
+  };
+
+  const handleNotificationClose = () => {
+    setNotification(""); // Close notification after 3 seconds
   };
 
   if (!auction) return <div>Loading...</div>;
@@ -76,7 +97,7 @@ const AuctionDetail = () => {
           </div>
 
           <button
-            onClick={placeBid}
+            onClick={handlePlaceBid}
             className="w-full px-4 py-2 mb-4 text-white bg-yellow-500 rounded-lg shadow-md hover:bg-yellow-600"
           >
             Place Bid
@@ -96,6 +117,21 @@ const AuctionDetail = () => {
           </div>
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      <ConfirmationModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onConfirm={handleConfirmBid}
+      />
+
+      {/* Notification */}
+      {notification && (
+        <Notification
+          message={notification}
+          onClose={handleNotificationClose}
+        />
+      )}
     </div>
   );
 };
