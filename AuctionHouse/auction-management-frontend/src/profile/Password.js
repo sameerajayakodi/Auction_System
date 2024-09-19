@@ -44,8 +44,8 @@ const Password = () => {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="mb-6 text-3xl font-bold">Change Password</h2>
+    <div className="p-6 border-2">
+      <h2 className="mb-6 text-2xl font-bold ">Change Password</h2>
       <div className="p-6 bg-white">
         {error && <div className="mb-4 text-red-600">{error}</div>}
         {success && <div className="mb-4 text-green-600">{success}</div>}
@@ -59,7 +59,7 @@ const Password = () => {
             type="password"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            className="w-full p-2 mt-1 border rounded-md"
+            className="w-full p-2 mt-1 border-2"
             aria-describedby="current-password-description"
           />
         </div>
@@ -73,7 +73,7 @@ const Password = () => {
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full p-2 mt-1 border rounded-md"
+            className="w-full p-2 mt-1 border-2"
             aria-describedby="new-password-description"
           />
           <div id="new-password-description" className="mt-1 text-gray-500">
@@ -91,7 +91,7 @@ const Password = () => {
             type="password"
             value={confirmNewPassword}
             onChange={(e) => setConfirmNewPassword(e.target.value)}
-            className="w-full p-2 mt-1 border rounded-md"
+            className="w-full p-2 mt-1 border-2"
             aria-describedby="confirm-new-password-description"
           />
         </div>
@@ -99,7 +99,7 @@ const Password = () => {
         <button
           onClick={handleUpdatePassword}
           className={`p-2 text-white ${
-            loading ? "bg-gray-500" : "bg-blue-600"
+            loading ? "bg-gray-500" : "bg-gray-600"
           } rounded-md`}
           disabled={loading}
         >
