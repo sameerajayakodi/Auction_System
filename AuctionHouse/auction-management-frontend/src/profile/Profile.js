@@ -5,9 +5,9 @@ const Profile = () => {
   return (
     <div className="flex">
       {/* Sidebar */}
-      <div className="w-64 h-screen p-4 bg-gray-100 shadow-md">
+      <div className="flex flex-row h-screen p-4 text-white bg-gray-900 w-80 ">
         <nav>
-          <ul>
+          <ul className="mt-40 space-y-10">
             <li className="mb-4">
               <Link to="/profile/info" className="flex items-center">
                 <span className="mr-2 text-xl">🏠</span>
