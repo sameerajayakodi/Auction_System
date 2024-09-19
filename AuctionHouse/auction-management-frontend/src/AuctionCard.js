@@ -78,7 +78,7 @@ const AuctionCard = ({ auction }) => {
   };
 
   return (
-    <div className="relative w-full h-full py-2 border-gray-300 border-y border-x group">
+    <div className="relative w-full h-full p-6 py-2 border-gray-300 rounded-2xl group">
       <div className="relative p-2 transition-opacity duration-300 group-hover:opacity-50">
         {/* Image Section */}
         <img
