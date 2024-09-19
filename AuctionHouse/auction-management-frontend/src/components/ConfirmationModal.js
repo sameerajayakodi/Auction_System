@@ -13,13 +13,13 @@ const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
         <div className="flex justify-end mt-4 space-x-4">
           <button
             onClick={onConfirm}
-            className="px-4 py-2 text-white bg-blue-500 rounded-md"
+            className="px-4 py-2 text-white bg-gray-600 rounded-md"
           >
             Confirm
           </button>
           <button
             onClick={onClose}
-            className="px-4 py-2 text-white bg-gray-500 rounded-md"
+            className="px-4 py-2 text-white bg-gray-600 rounded-md"
           >
             Cancel
           </button>
