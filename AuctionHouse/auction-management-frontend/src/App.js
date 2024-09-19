@@ -1,5 +1,10 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import AdminDashboard from "./admin/AdminDashboard";
 import EditUser from "./admin/EditUser";
 import ManageAuctions from "./admin/ManageAuctions";
@@ -27,15 +32,20 @@ function App() {
           <Route path="/auctions/:id" element={<AuctionDetail />} />
 
           {/* Profile route with nested sub-routes */}
+
+          {/* Profile route with nested child routes */}
           <Route path="/profile" element={<Profile />}>
-            <Route path="info" element={<ProfileInfo />} /> {/* Profile Info */}
-            <Route path="password" element={<Password />} />{" "}
-            {/* Password section */}
-            <Route path="payment" element={<Payment />} />{" "}
-            {/* Payment section */}
-            <Route path="history" element={<History />} />{" "}
-            {/* History section */}
+            {/* Redirect /profile to /profile/info */}
+            <Route index element={<Navigate to="/profile/info" />} />
+
+            {/* Define other child routes under /profile */}
+            <Route path="info" element={<ProfileInfo />} />
+            <Route path="password" element={<Password />} />
+            <Route path="payment" element={<Payment />} />
+            <Route path="history" element={<History />} />
           </Route>
+
+          {/* You can define other routes here, if needed */}
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
