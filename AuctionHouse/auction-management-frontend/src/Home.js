@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import image from "./images/1 (1).jpg";
 
 const Home = () => {
   return (
@@ -30,7 +31,7 @@ const Home = () => {
 
       {/* About Section */}
 
-      <div className="px-6 py-16 bg-white">
+      <div className="px-20 py-16 bg-white">
         <div className="container flex flex-col items-center mx-auto md:flex-row">
           {/* Left Side - Text */}
           <div className="mb-8 md:w-1/2 md:mb-0 md:pr-12">
@@ -46,7 +47,8 @@ const Home = () => {
           {/* Right Side - Image */}
           <div className="md:w-1/2">
             <img
-              src="https://example.com/your-image.jpg"
+              width={500}
+              src={image}
               alt="Auction House About Us"
               className="rounded-lg shadow-lg"
             />
