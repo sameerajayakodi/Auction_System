@@ -60,15 +60,15 @@ const Payment = () => {
 
   return (
     <div className="p-6">
-      <h2 className="mb-6 text-3xl font-bold">Payment Methods</h2>
-      <div className="p-6 bg-white rounded-lg shadow">
+      <h2 className="mb-6 text-2xl font-bold">Payment Methods</h2>
+      <div className="p-6 bg-white border-2">
         {error && <div className="mb-4 text-red-600">{error}</div>}
         {success && <div className="mb-4 text-green-600">{success}</div>}
 
         <div className="mb-6">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="p-2 mb-4 text-white bg-blue-600 rounded-md"
+            className="p-2 mb-4 text-white bg-gray-600 rounded-md"
           >
             Add New Card
           </button>
@@ -177,13 +177,13 @@ const Payment = () => {
               <div className="flex justify-end space-x-4">
                 <button
                   onClick={handleAddCard}
-                  className="px-4 py-2 text-white bg-blue-600 rounded-md"
+                  className="px-4 py-2 text-white bg-gray-600 rounded-md hover:bg-gray-900"
                 >
                   Add
                 </button>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="px-4 py-2 text-white bg-gray-500 rounded-md"
+                  className="px-4 py-2 bg-gray-200 rounded-md"
                 >
                   Cancel
                 </button>
