@@ -12,7 +12,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-start justify-center h-screen mt-4">
+    <div className="flex items-center justify-center h-screen mt-4 border-2">
       <div className="flex flex-col h-full px-16 py-10 md:w-2/5 md:h-auto">
         <h2 className="mb-4 text-xl font-bold text-center">
           Create New Account
