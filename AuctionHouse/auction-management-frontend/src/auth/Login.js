@@ -11,7 +11,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center w-full h-screen border ">
-      <div className="flex flex-col w-full h-full p-16 border-2 shadow-lg md:w-2/5 md:h-auto">
+      <div className="flex flex-col w-full h-full p-16 border-2 md:w-2/5 md:h-auto">
         <p className="mb-4 text-xl font-bold text-center">
           Welcome back to Auctions
         </p>
