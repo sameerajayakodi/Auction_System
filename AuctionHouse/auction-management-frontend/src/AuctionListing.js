@@ -168,7 +168,7 @@ const AuctionListing = () => {
         </div>
 
         {/* Auction Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
           {filteredAuctions.length > 0 ? (
             filteredAuctions.map((auction) => (
               <Link
