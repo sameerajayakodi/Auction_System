@@ -42,9 +42,9 @@ const ProfileInfo = () => {
   };
 
   return (
-    <div>
-      <h2 className="mb-2 text-2xl font-bold ">Profile Information</h2>
-      <div className="p-10 bg-white border-2">
+    <div className="flex flex-col w-4/5 ">
+      <h2 className="mb-2 text-2xl font-bold">Profile Information</h2>
+      <div className="bg-white border-2 ">
         <div className="relative mb-2">
           <img
             src={cover} // Replace with the actual URL of the cover photo
@@ -134,7 +134,7 @@ const ProfileInfo = () => {
           ) : (
             <button
               onClick={handleEditClick}
-              className="px-4 py-2 text-white bg-gray-600 rounded-md"
+              className="px-4 py-2 text-white bg-gray-600 rounded-md hover:bg-gray-900"
             >
               Edit
             </button>
