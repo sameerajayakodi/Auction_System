@@ -42,9 +42,9 @@ const ProfileInfo = () => {
   };
 
   return (
-    <div className="flex flex-col w-4/5 ">
+    <div className="flex flex-col ">
       <h2 className="mb-2 text-2xl font-bold">Profile Information</h2>
-      <div className="bg-white border-2 ">
+      <div className="p-6 bg-white border-2 ">
         <div className="relative mb-2">
           <img
             src={cover} // Replace with the actual URL of the cover photo
