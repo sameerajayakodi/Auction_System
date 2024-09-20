@@ -1,10 +1,41 @@
-import React from "react";
-import { FaArrowRight, FaBell, FaList, FaLock } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import about from "./images/about.png";
 import image from "./images/back.jpg";
 
 const Home = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+
+  useEffect(() => {
+    const nextAuctionDate = new Date("2024-09-22T00:00:00"); // Replace with your auction date
+
+    const interval = setInterval(() => {
+      const now = new Date();
+      const difference = nextAuctionDate - now;
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setTimeLeft({ days, hours, minutes, seconds });
+
+      if (difference < 0) {
+        clearInterval(interval);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       {/* Hero Section - Full Background Image */}
@@ -28,10 +59,16 @@ const Home = () => {
             Explore Auctions <FaArrowRight className="ml-2" />
           </Link>
         </div>
-      </div>
-
-      <div className="container flex items-center justify-center h-20 mx-auto text-center bg-red-500 rounded-full ">
-        div
+        {/* Countdown Timer */}
+        <div className="absolute flex flex-row items-center w-2/3 h-20 text-center transform -translate-x-1/2 bg-green-500 rounded-full shadow-lg justify-evenly left-1/2 -bottom-8">
+          <span className="px-4 py-1 text-4xl font-bold text-white ">
+            Next Auction Starts In :
+          </span>
+          <div className="font-mono text-5xl font-bold">
+            {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
+            {timeLeft.seconds}s
+          </div>
+        </div>
       </div>
 
       {/* About Section */}
@@ -60,140 +97,7 @@ const Home = () => {
       </div>
 
       {/* Features Section */}
-      <div className="py-16 bg-gray-100 px-28">
-        <div className="container mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">
-            Why Choose Us?
-          </h2>
-          <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 py-20 transition duration-300 bg-white border-0 shadow-lg cursor-pointer bg-slate hover:scale-95 rounded-3xl">
-              <FaList className="mx-auto mb-4 text-4xl font-bold text-black " />
-              <h3 className="mb-4 text-xl font-semibold">Wide Selection</h3>
-              <p className="text-gray-600 ">
-                We offer a wide variety of auctions, from rare collectibles to
-                the latest gadgets.
-              </p>
-            </div>
-            <div className="p-8 py-20 transition duration-300 bg-white border-0 shadow-lg cursor-pointer bg-slate hover:scale-95 rounded-3xl">
-              <FaLock className="mx-auto mb-4 text-4xl font-bold text-black" />
-              <h3 className="mb-4 text-xl font-semibold">Secure Bidding</h3>
-              <p className="text-gray-600 ">
-                Our platform ensures a safe and secure bidding experience for
-                all users.
-              </p>
-            </div>
-            <div className="p-8 py-20 transition duration-300 bg-white border-0 shadow-lg cursor-pointer bg-slate hover:scale-95 rounded-3xl">
-              <FaBell className="mx-auto mb-4 text-4xl font-bold text-black" />
-              <h3 className="mb-4 text-xl font-semibold">Real-time Updates</h3>
-              <p className="text-gray-600 ">
-                Get real-time notifications and updates on your bids and
-                auctions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* How It Works Section */}
-      <div className="px-6 py-16 bg-white">
-        <div className="container mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">How It Works</h2>
-          <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 bg-gray-100 rounded-lg shadow-lg">
-              <h3 className="mb-4 text-2xl font-semibold">Step 1: Register</h3>
-              <p className="text-gray-600">
-                Create an account to participate in auctions and track your
-                bids.
-              </p>
-            </div>
-            <div className="p-8 bg-gray-100 rounded-lg shadow-lg">
-              <h3 className="mb-4 text-2xl font-semibold">
-                Step 2: Browse Auctions
-              </h3>
-              <p className="text-gray-600">
-                Find auctions that interest you and place your bids in
-                real-time.
-              </p>
-            </div>
-            <div className="p-8 bg-gray-100 rounded-lg shadow-lg">
-              <h3 className="mb-4 text-2xl font-semibold">
-                Step 3: Win & Collect
-              </h3>
-              <p className="text-gray-600">
-                Win auctions and get notified instantly. Securely pay and
-                receive your items.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="px-6 py-16 bg-gray-100">
-        <div className="container mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">
-            What Our Users Say
-          </h2>
-          <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-2">
-            <div className="p-8 bg-white rounded-lg shadow-lg">
-              <p className="mb-4 italic text-gray-600">
-                "Auction House helped me find a rare collectible I was searching
-                for. The bidding process was smooth and secure."
-              </p>
-              <h3 className="text-xl font-semibold">John Doe</h3>
-            </div>
-            <div className="p-8 bg-white rounded-lg shadow-lg">
-              <p className="mb-4 italic text-gray-600">
-                "I love the variety of items available. The real-time updates
-                kept me on track with my bids!"
-              </p>
-              <h3 className="text-xl font-semibold">Jane Smith</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Newsletter/Call to Action Section */}
-      <div className="px-6 py-16 bg-white">
-        <div className="container mx-auto text-center">
-          <h2 className="mb-4 text-4xl font-bold">Stay Updated</h2>
-          <p className="mb-8 text-xl text-gray-700">
-            Subscribe to our newsletter for the latest auctions, deals, and
-            updates.
-          </p>
-          <div className="mt-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-64 p-3 rounded-l-lg"
-            />
-            <button className="px-6 py-3 font-bold text-black bg-yellow-500 rounded-r-lg hover:bg-yellow-600">
-              Subscribe
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer Section */}
-      <div className="py-8 text-white bg-gray-800">
-        <div className="container mx-auto text-center">
-          <p className="text-lg">© 2024 Auction House. All rights reserved.</p>
-          <div className="mt-4">
-            <Link
-              to="/privacy-policy"
-              className="mr-4 text-gray-400 hover:text-white"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              to="/terms-of-service"
-              className="text-gray-400 hover:text-white"
-            >
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </div>
+      {/* ...rest of the content */}
     </>
   );
 };
