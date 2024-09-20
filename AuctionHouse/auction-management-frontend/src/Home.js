@@ -1,7 +1,8 @@
 import React from "react";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaBell, FaList, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import image from "./images/back.jpg";
+
 const Home = () => {
   return (
     <>
@@ -29,16 +30,27 @@ const Home = () => {
       </div>
 
       {/* About Section */}
-
       <div className="px-20 py-16 bg-gray-100">
-        <div className="container flex flex-col items-center mx-auto">
-          <h2 className="mb-8 text-2xl font-bold">About Us</h2>
-          <p className="text-center text-gray-700 align-middle text-md">
-            Auction House is a leading online auction platform where you can
-            find a variety of unique products. From antiques to modern gadgets,
-            we provide a safe and secure way to participate in auctions
-            worldwide.
-          </p>
+        <div className="container grid items-center grid-cols-1 gap-12 mx-auto md:grid-cols-2">
+          {/* Text Content */}
+          <div>
+            <h2 className="mb-8 text-4xl font-bold text-left">About Us</h2>
+            <p className="text-lg leading-relaxed text-left text-gray-700">
+              Auction House is a leading online auction platform where you can
+              find a variety of unique products. From antiques to modern
+              gadgets, we provide a safe and secure way to participate in
+              auctions worldwide.
+            </p>
+          </div>
+
+          {/* Icon/Image */}
+          <div className="flex justify-center">
+            <img
+              src={image}
+              alt="About us illustration"
+              className="w-3/4 h-auto"
+            />
+          </div>
         </div>
       </div>
 
@@ -49,21 +61,24 @@ const Home = () => {
             Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 bg-white border-2">
+            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg bg-slate hover:scale-95 rounded-3xl ">
+              <FaList className="mx-auto mb-4 text-4xl text-gray-500  b" />
               <h3 className="mb-4 text-xl font-semibold">Wide Selection</h3>
               <p className="text-gray-600">
                 We offer a wide variety of auctions, from rare collectibles to
                 the latest gadgets.
               </p>
             </div>
-            <div className="p-8 bg-white border-2">
+            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg bg-slate hover:scale-95 rounded-3xl">
+              <FaLock className="mx-auto mb-4 text-4xl text-blue-500" />
               <h3 className="mb-4 text-xl font-semibold">Secure Bidding</h3>
               <p className="text-gray-600">
                 Our platform ensures a safe and secure bidding experience for
                 all users.
               </p>
             </div>
-            <div className="p-8 bg-white border-2">
+            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg bg-slate hover:scale-95 rounded-3xl">
+              <FaBell className="mx-auto mb-4 text-4xl text-red-500" />
               <h3 className="mb-4 text-xl font-semibold">Real-time Updates</h3>
               <p className="text-gray-600">
                 Get real-time notifications and updates on your bids and
