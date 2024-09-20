@@ -145,7 +145,7 @@ const AuctionListing = () => {
         </div>
 
         {/* Filter and Sort Section */}
-        <div className="flex items-center justify-between py-2 mb-4">
+        <div className="flex items-center justify-between py-2 mb-4 ">
           <button
             onClick={() => setIsSidebarOpen(true)}
             className="flex items-center px-2 py-1 text-sm text-gray-500 bg-transparent border-2"
@@ -168,7 +168,7 @@ const AuctionListing = () => {
         </div>
 
         {/* Auction Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
           {filteredAuctions.length > 0 ? (
             filteredAuctions.map((auction) => (
               <Link
