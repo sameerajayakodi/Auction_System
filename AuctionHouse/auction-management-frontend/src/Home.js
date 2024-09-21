@@ -40,7 +40,7 @@ const Home = () => {
     <>
       {/* Hero Section - Full Background Image */}
       <div className="relative h-screen">
-        <div className="z-10 flex flex-col items-center justify-center h-full text-center relativ bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+        <div className="z-10 flex flex-col items-center justify-center h-full text-center relativ bg-gradient-to-r from-gray-400 via-gray-100 to-gray-400">
           <h1 className="p-6 mb-4 text-6xl font-bold ">
             Welcome to Auction House
           </h1>
@@ -49,7 +49,7 @@ const Home = () => {
           </p>
           <Link
             to="/auctions"
-            className="flex items-center px-5 py-4 text-2xl font-bold text-white transition duration-500 bg-blue-600 rounded-full shadow-lg shadow-xl hover:bg-pink-500 hover:text-white"
+            className="flex items-center px-5 py-4 text-2xl font-bold text-white transition duration-500 bg-blue-600 rounded-full shadow-xl hover:bg-pink-500 hover:text-white"
           >
             Explore Auctions <FaArrowRight className="ml-2" />
           </Link>
