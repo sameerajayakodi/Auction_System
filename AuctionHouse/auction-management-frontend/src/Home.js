@@ -61,7 +61,7 @@ const Home = () => {
           </Link>
         </div>
         {/* Countdown Timer */}
-        <div className="absolute flex flex-row items-center w-2/3 h-20 text-center transform -translate-x-1/2 rounded-full shadow-lg bg-stone-300 justify-evenly left-1/2 -bottom-8">
+        <div className="absolute flex flex-row items-center w-2/3 h-12 text-center transform -translate-x-1/2 bg-orange-300 rounded-full shadow-lg justify-evenly left-1/2 -bottom-8">
           <span className="px-4 py-1 text-2xl font-bold text-gray-900">
             Next Auction Starts In :
           </span>
