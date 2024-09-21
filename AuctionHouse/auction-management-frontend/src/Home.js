@@ -53,7 +53,7 @@ const Home = () => {
             <h1 className="mb-4 text-6xl font-bold">
               Welcome to Auction House
             </h1>
-            <p className="mb-8 text-2xl">
+            <p className="mb-8 text-2xl font-semibold">
               Discover unique auctions and place your bids
             </p>
             <Link
@@ -67,7 +67,7 @@ const Home = () => {
           </div>
         </div>
         {/* Countdown Timer */}
-        <div className="absolute right-0 flex flex-col items-center p-6 py-8 text-center transform -translate-x-1/2 bg-purple-300 shadow-2xl top-2 ">
+        <div className="absolute right-0 flex flex-col items-center p-6 py-8 text-center transform -translate-x-1/2 bg-white shadow-2xl rounded-b-3xl top-2 ">
           <span className="text-2xl font-bold text-gray-900">
             Next Auction Starts In
           </span>
@@ -121,11 +121,13 @@ const Home = () => {
       {/* =================================================================================== */}
       {/* About Section */}
       <div>
-        <div className="grid items-center bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 grid-cols-1mx-auto md:grid-cols-2">
+        <div className="grid items-center gap-4 bg-gray-100 px-14 grid-cols-1mx-auto md:grid-cols-2">
           {/* Text Content */}
-          <div className="flex flex-col justify-center px-10 text-center">
-            <h2 className="mb-8 text-4xl font-bold text-center">About Us</h2>
-            <p className="text-xl leading-relaxed text-center text-gray-900">
+          <div className="flex flex-col justify-center h-full text-center">
+            <h2 className="mb-8 text-4xl font-bold text-center text-">
+              About Us
+            </h2>
+            <p className="text-2xl leading-relaxed text-center text-black">
               Auction House is a leading online auction platform where you can
               find a variety of unique products. From antiques to modern
               gadgets, we provide a safe and secure way to participate in
@@ -138,19 +140,19 @@ const Home = () => {
             <img
               src={about}
               alt="About us illustration"
-              className="w-3/4 h-auto"
+              className="w-3/5 h-auto "
             />
           </div>
         </div>
       </div>
 
       <div className="py-16 bg-gray-100 ">
-        <div className="container mx-auto">
+        <div className="container mx-auto ">
           <h2 className="mb-8 text-4xl font-bold text-center">
             Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 py-20 transition duration-300 bg-white shadow-xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 bg-white shadow-2xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
               <FaList className="mx-auto mb-4 text-4xl font-bold text-black " />
               <h3 className="mb-4 text-xl font-semibold">Wide Selection</h3>
               <p className="text-gray-600 ">
@@ -158,7 +160,7 @@ const Home = () => {
                 the latest gadgets.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 bg-white shadow-xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 bg-white shadow-2xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
               <FaLock className="mx-auto mb-4 text-4xl font-bold text-black" />
               <h3 className="mb-4 text-xl font-semibold">Secure Bidding</h3>
               <p className="text-gray-600 ">
@@ -166,7 +168,7 @@ const Home = () => {
                 all users.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 bg-white shadow-xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 bg-white shadow-2xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
               <FaBell className="mx-auto mb-4 text-4xl font-bold text-black" />
               <h3 className="mb-4 text-xl font-semibold">Real-time Updates</h3>
               <p className="text-gray-600 ">
