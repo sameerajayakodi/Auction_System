@@ -67,9 +67,9 @@ const Home = () => {
           </div>
         </div>
         {/* Countdown Timer */}
-        <div className="absolute flex flex-row items-center w-2/3 h-20 text-center transform -translate-x-1/2 bg-orange-300 rounded-full shadow-lg justify-evenly left-1/2 -bottom-8">
-          <span className="px-4 py-1 text-2xl font-bold text-gray-900">
-            Next Auction Starts In :
+        <div className="absolute right-0 flex flex-col items-center p-6 py-8 text-center transform -translate-x-1/2 bg-purple-300 shadow-2xl top-2 ">
+          <span className="text-2xl font-bold text-gray-900">
+            Next Auction Starts In
           </span>
           <div className="text-4xl font-bold text-gray-900 font-inter">
             {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
@@ -79,8 +79,8 @@ const Home = () => {
       </div>
 
       {/* =================================================================================== */}
-      <div className="flex items-center justify-center px-6 py-16 text-center bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 ">
-        <div className="container flex justify-between w-full space-x-4 overflow-x-auto scrolling-touch no-scrollbar">
+      <div className="flex items-center justify-center px-6 py-16 text-center bg-gray-100 ">
+        <div className="container flex justify-between w-full space-x-4 overflow-x-auto scrolling-touch bg-white rounded-full shadow-xl no-scrollbar">
           {/* Total Items */}
           <div className="flex flex-col items-center w-1/4 p-4">
             <h3 className="mb-2 text-5xl font-bold ">
@@ -121,11 +121,11 @@ const Home = () => {
       {/* =================================================================================== */}
       {/* About Section */}
       <div>
-        <div className="grid items-center grid-cols-1mx-auto md:grid-cols-2">
+        <div className="grid items-center bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 grid-cols-1mx-auto md:grid-cols-2">
           {/* Text Content */}
-          <div className="px-10 ">
-            <h2 className="mb-8 text-4xl font-bold text-left">About Us</h2>
-            <p className="text-lg leading-relaxed text-left text-gray-900">
+          <div className="flex flex-col justify-center px-10 text-center">
+            <h2 className="mb-8 text-4xl font-bold text-center">About Us</h2>
+            <p className="text-xl leading-relaxed text-center text-gray-900">
               Auction House is a leading online auction platform where you can
               find a variety of unique products. From antiques to modern
               gadgets, we provide a safe and secure way to participate in
@@ -134,7 +134,7 @@ const Home = () => {
           </div>
 
           {/* Icon/Image */}
-          <div className="flex justify-center p-20 bg-white">
+          <div className="flex justify-center p-20 ">
             <img
               src={about}
               alt="About us illustration"
@@ -144,13 +144,13 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="py-16 ">
+      <div className="py-16 bg-gray-100 ">
         <div className="container mx-auto">
           <h2 className="mb-8 text-4xl font-bold text-center">
             Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg cursor-pointer bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 px-28 bg-slate hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 bg-white shadow-xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
               <FaList className="mx-auto mb-4 text-4xl font-bold text-black " />
               <h3 className="mb-4 text-xl font-semibold">Wide Selection</h3>
               <p className="text-gray-600 ">
@@ -158,7 +158,7 @@ const Home = () => {
                 the latest gadgets.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg cursor-pointer bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 px-28 bg-slate hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 bg-white shadow-xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
               <FaLock className="mx-auto mb-4 text-4xl font-bold text-black" />
               <h3 className="mb-4 text-xl font-semibold">Secure Bidding</h3>
               <p className="text-gray-600 ">
@@ -166,7 +166,7 @@ const Home = () => {
                 all users.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg cursor-pointer bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 px-28 bg-slate hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 bg-white shadow-xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
               <FaBell className="mx-auto mb-4 text-4xl font-bold text-black" />
               <h3 className="mb-4 text-xl font-semibold">Real-time Updates</h3>
               <p className="text-gray-600 ">
@@ -182,31 +182,34 @@ const Home = () => {
       {/* ...rest of the content */}
       {/* Testimonials Section */}
 
-      <div className="px-6 py-16 bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+      {/* ================================================================================== */}
+      <div className="px-6 py-16 text-white bg-gray-100">
         <div className="container mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center">How It Works</h2>
+          <h2 className="mb-8 text-4xl font-bold text-center text-black">
+            How It Works
+          </h2>
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 bg-gray-100 rounded-lg shadow-lg">
+            <div className="p-8 bg-[#7E4EAA] rounded-lg shadow-lg">
               <h3 className="mb-4 text-2xl font-semibold">Step 1: Register</h3>
-              <p className="text-gray-600">
+              <p>
                 Create an account to participate in auctions and track your
                 bids.
               </p>
             </div>
-            <div className="p-8 bg-gray-100 rounded-lg shadow-lg">
+            <div className="p-8 bg-[#7E4EAA] rounded-lg shadow-lg">
               <h3 className="mb-4 text-2xl font-semibold">
                 Step 2: Browse Auctions
               </h3>
-              <p className="text-gray-600">
+              <p>
                 Find auctions that interest you and place your bids in
                 real-time.
               </p>
             </div>
-            <div className="p-8 bg-gray-100 rounded-lg shadow-lg">
+            <div className="p-8 bg-[#7E4EAA] rounded-lg shadow-lg">
               <h3 className="mb-4 text-2xl font-semibold">
                 Step 3: Win & Collect
               </h3>
-              <p className="text-gray-600">
+              <p>
                 Win auctions and get notified instantly. Securely pay and
                 receive your items.
               </p>
@@ -214,7 +217,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-
+      {/* ======================================================================================== */}
       <div className="px-6 py-16 bg-gray-100">
         <div className="container mx-auto">
           <h2 className="mb-8 text-4xl font-bold text-center">
