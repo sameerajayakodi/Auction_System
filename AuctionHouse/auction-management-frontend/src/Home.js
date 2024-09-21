@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import { FaBell, FaList, FaLock } from "react-icons/fa";
+import { FaArrowRight, FaBell, FaList, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import background from "./images//background.jpg";
 import about from "./images/about.png";
@@ -48,8 +48,8 @@ const Home = () => {
               backgroundImage: `url(${background})`,
             }}
           ></div>
-          <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
-          <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white">
+
+          <div className="relative z-20 flex flex-col items-center justify-center h-full text-center">
             <h1 className="mb-4 text-6xl font-bold">
               Welcome to Auction House
             </h1>
@@ -58,9 +58,11 @@ const Home = () => {
             </p>
             <Link
               to="/auctions"
-              className="px-8 py-3 text-lg font-bold text-black transition duration-300 bg-gray-600 rounded-lg hover:bg-yellow-600"
+              className="flex items-center px-8 py-3 text-xl font-bold text-white transition duration-300 bg-[#7E4EAA] rounded-full hover:bg-purple-900"
             >
               Explore Auctions
+              <FaArrowRight className="ml-2" />{" "}
+              {/* Adding right arrow icon with margin */}
             </Link>
           </div>
         </div>
