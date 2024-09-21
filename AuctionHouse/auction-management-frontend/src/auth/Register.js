@@ -19,8 +19,8 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
-      <div className="w-full max-w-2xl p-10 bg-white shadow-md rounded-2xl">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+      <div className="w-full max-w-2xl p-10">
         {/* Optional: Logo */}
         <div className="flex justify-center mb-6">
           <p className="text-xl font-bold text-gray-500">AuctionHouse.lk</p>
