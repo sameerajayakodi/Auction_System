@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="py-1 text-xs text-center bg-gray-100">
+      <div className="py-1 text-xs text-center text-white bg-gray-900">
         FREE Island-wide Delivery for LKR 29000+ Purchases
       </div>
       <nav className="px-6 py-2 ">
