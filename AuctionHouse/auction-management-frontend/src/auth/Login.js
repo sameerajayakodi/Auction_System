@@ -11,7 +11,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-400 via-gray-100 to-gray-400">
       <div className="w-full max-w-2xl p-10 ">
         {/* Optional: Logo */}
         <div className="flex justify-center mb-6">
