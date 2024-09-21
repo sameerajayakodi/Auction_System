@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import { FaArrowRight, FaBell, FaList, FaLock } from "react-icons/fa";
+import { FaBell, FaList, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import background from "./images//background.jpg";
 import about from "./images/about.png";
 
 const Home = () => {
@@ -40,19 +41,28 @@ const Home = () => {
     <>
       {/* Hero Section - Full Background Image */}
       <div className="relative h-screen">
-        <div className="z-10 flex flex-col items-center justify-center h-full text-center relativ bg-gradient-to-r from-gray-400 via-gray-100 to-gray-400">
-          <h1 className="p-6 mb-4 text-6xl font-bold ">
-            Welcome to Auction House
-          </h1>
-          <p className="mb-8 text-3xl">
-            Discover unique auctions and place your bids
-          </p>
-          <Link
-            to="/auctions"
-            className="flex items-center px-5 py-4 text-2xl font-bold text-white transition duration-500 bg-blue-600 rounded-full shadow-xl hover:bg-pink-500 hover:text-white"
-          >
-            Explore Auctions <FaArrowRight className="ml-2" />
-          </Link>
+        <div className="relative h-screen">
+          <div
+            className="absolute inset-0 bg-center bg-cover"
+            style={{
+              backgroundImage: `url(${background})`,
+            }}
+          ></div>
+          <div className="absolute inset-0 bg-gray-900 opacity-50"></div>
+          <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white">
+            <h1 className="mb-4 text-6xl font-bold">
+              Welcome to Auction House
+            </h1>
+            <p className="mb-8 text-2xl">
+              Discover unique auctions and place your bids
+            </p>
+            <Link
+              to="/auctions"
+              className="px-8 py-3 text-lg font-bold text-black transition duration-300 bg-gray-600 rounded-lg hover:bg-yellow-600"
+            >
+              Explore Auctions
+            </Link>
+          </div>
         </div>
         {/* Countdown Timer */}
         <div className="absolute flex flex-row items-center w-2/3 h-20 text-center transform -translate-x-1/2 bg-orange-300 rounded-full shadow-lg justify-evenly left-1/2 -bottom-8">
@@ -67,7 +77,7 @@ const Home = () => {
       </div>
 
       {/* =================================================================================== */}
-      <div className="flex items-center justify-center px-6 py-16 text-center bg-white ">
+      <div className="flex items-center justify-center px-6 py-16 text-center bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 ">
         <div className="container flex justify-between w-full space-x-4 overflow-x-auto scrolling-touch no-scrollbar">
           {/* Total Items */}
           <div className="flex flex-col items-center w-1/4 p-4">
@@ -109,7 +119,7 @@ const Home = () => {
       {/* =================================================================================== */}
       {/* About Section */}
       <div>
-        <div className="grid items-center bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 grid-cols-1mx-auto md:grid-cols-2">
+        <div className="grid items-center grid-cols-1mx-auto md:grid-cols-2">
           {/* Text Content */}
           <div className="px-10 ">
             <h2 className="mb-8 text-4xl font-bold text-left">About Us</h2>
@@ -132,13 +142,13 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="py-16 bg-gray-200 px-28">
+      <div className="py-16 ">
         <div className="container mx-auto">
           <h2 className="mb-8 text-4xl font-bold text-center">
             Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 py-20 transition duration-300 bg-white border-2 shadow-lg cursor-pointer bg-slate hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg cursor-pointer bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 px-28 bg-slate hover:scale-95 rounded-3xl">
               <FaList className="mx-auto mb-4 text-4xl font-bold text-black " />
               <h3 className="mb-4 text-xl font-semibold">Wide Selection</h3>
               <p className="text-gray-600 ">
@@ -146,7 +156,7 @@ const Home = () => {
                 the latest gadgets.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 bg-white border-2 shadow-lg cursor-pointer bg-slate hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg cursor-pointer bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 px-28 bg-slate hover:scale-95 rounded-3xl">
               <FaLock className="mx-auto mb-4 text-4xl font-bold text-black" />
               <h3 className="mb-4 text-xl font-semibold">Secure Bidding</h3>
               <p className="text-gray-600 ">
@@ -154,7 +164,7 @@ const Home = () => {
                 all users.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 bg-white border-2 shadow-lg cursor-pointer bg-slate hover:scale-95 rounded-3xl">
+            <div className="p-8 py-20 transition duration-300 border-2 shadow-lg cursor-pointer bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 px-28 bg-slate hover:scale-95 rounded-3xl">
               <FaBell className="mx-auto mb-4 text-4xl font-bold text-black" />
               <h3 className="mb-4 text-xl font-semibold">Real-time Updates</h3>
               <p className="text-gray-600 ">
@@ -170,7 +180,7 @@ const Home = () => {
       {/* ...rest of the content */}
       {/* Testimonials Section */}
 
-      <div className="px-6 py-16 bg-gradient-to-r to-blue-300 via-purple-100 from-pink-300">
+      <div className="px-6 py-16 bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
         <div className="container mx-auto">
           <h2 className="mb-8 text-4xl font-bold text-center">How It Works</h2>
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
