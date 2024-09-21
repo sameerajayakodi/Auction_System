@@ -3,7 +3,6 @@ import CountUp from "react-countup";
 import { FaArrowRight, FaBell, FaList, FaLock } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import about from "./images/about.png";
-import image from "./images/back.jpg";
 
 const Home = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -41,16 +40,9 @@ const Home = () => {
     <>
       {/* Hero Section - Full Background Image */}
       <div className="relative h-screen">
-        <div
-          className="absolute inset-0 bg-center bg-cover"
-          style={{
-            backgroundImage: `url(${image})`,
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
-          <h1 className="mb-4 text-5xl font-bold">Welcome to Auction House</h1>
-          <p className="mb-8 text-2xl">
+        <div className="z-10 flex flex-col items-center justify-center h-full text-center relativ bg-gradient-to-r from-blue-500 via-purple-200 to-pink-500">
+          <h1 className="mb-4 text-6xl font-bold">Welcome to Auction House</h1>
+          <p className="mb-8 text-3xl">
             Discover unique auctions and place your bids
           </p>
           <Link
@@ -115,11 +107,11 @@ const Home = () => {
       {/* =================================================================================== */}
       {/* About Section */}
       <div>
-        <div className="grid items-center text-white bg-[#212121] grid-cols-1mx-auto md:grid-cols-2">
+        <div className="grid items-center bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 grid-cols-1mx-auto md:grid-cols-2">
           {/* Text Content */}
           <div className="px-10 ">
             <h2 className="mb-8 text-4xl font-bold text-left">About Us</h2>
-            <p className="text-lg leading-relaxed text-left text-gray-200">
+            <p className="text-lg leading-relaxed text-left text-gray-900">
               Auction House is a leading online auction platform where you can
               find a variety of unique products. From antiques to modern
               gadgets, we provide a safe and secure way to participate in
@@ -176,11 +168,9 @@ const Home = () => {
       {/* ...rest of the content */}
       {/* Testimonials Section */}
 
-      <div className="px-6 py-16 bg-[#212121]">
+      <div className="px-6 py-16 bg-gradient-to-r to-blue-300 via-purple-100 from-pink-300">
         <div className="container mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center text-white">
-            How It Works
-          </h2>
+          <h2 className="mb-8 text-4xl font-bold text-center">How It Works</h2>
           <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
             <div className="p-8 bg-gray-100 rounded-lg shadow-lg">
               <h3 className="mb-4 text-2xl font-semibold">Step 1: Register</h3>
