@@ -7,29 +7,40 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Handle login logic here
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg md:w-2/5">
-        <p className="mb-6 text-2xl font-semibold text-center text-gray-800">
-          Welcome Back to Auctions
-        </p>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
+      <div className="w-full max-w-xl p-10 bg-white shadow-md rounded-2xl">
+        {/* Optional: Logo */}
+        <div className="flex justify-center mb-6">
+          <img
+            src="https://your-logo-url.com/logo.png" // Replace with your logo URL
+            alt="Auctions Logo"
+            className="w-20 h-20"
+          />
+        </div>
+
+        <h2 className="mb-8 text-3xl font-extrabold text-center text-gray-800">
+          Welcome Back
+        </h2>
 
         <form onSubmit={handleSubmit}>
-          <div className="mb-5">
+          <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-700">
-              Email
+              Email Address
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="block w-full px-4 py-3 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
-              placeholder="Enter your email"
+              className="w-full px-4 py-3 text-sm text-gray-700 transition duration-200 ease-in-out bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="you@example.com"
               required
             />
           </div>
+
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-700">
               Password
@@ -38,16 +49,17 @@ const Login = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="block w-full px-4 py-3 text-sm border border-gray-300 rounded-lg bg-gray-50 focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
-              placeholder="Enter your password"
+              className="w-full px-4 py-3 text-sm text-gray-700 transition duration-200 ease-in-out bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="••••••••"
               required
             />
           </div>
+
           <button
             type="submit"
-            className="w-full px-4 py-2 text-lg font-medium text-white bg-gray-800 rounded-lg hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-500"
+            className="w-full px-4 py-3 text-sm font-semibold text-white transition duration-200 ease-in-out bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            Login to your account
+            Login to Your Account
           </button>
         </form>
 
@@ -56,7 +68,7 @@ const Login = () => {
             Don’t have an account?{" "}
             <Link
               to="/register"
-              className="font-medium text-gray-800 hover:text-gray-900"
+              className="font-semibold text-blue-600 transition-colors duration-200 hover:text-blue-700"
             >
               Register
             </Link>
