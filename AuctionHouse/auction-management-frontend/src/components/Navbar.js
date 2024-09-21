@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="py-1 text-xs text-center bg-gray-100">
         FREE Island-wide Delivery for LKR 29000+ Purchases
       </div>
-      <nav className="px-6 py-2">
+      <nav className="px-6 py-2 bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
         <div className="container flex items-center justify-between mx-auto">
           <h2 className="text-xl font-bold text-gray-800">ActionHouse.lk</h2>
           <div className="hidden space-x-4 md:flex">
