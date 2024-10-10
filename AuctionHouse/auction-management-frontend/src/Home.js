@@ -14,7 +14,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const nextAuctionDate = new Date("2024-09-22T00:00:00"); // Replace with your auction date
+    const nextAuctionDate = new Date("2024-10-22T00:00:00"); // Replace with your auction date
 
     const interval = setInterval(() => {
       const now = new Date();
@@ -79,7 +79,7 @@ const Home = () => {
       </div>
 
       {/* =================================================================================== */}
-      <div className="flex items-center justify-center px-6 py-16 text-center bg-gray-100 ">
+      <div className="flex items-center justify-center px-6 py-16 text-center bg-gradient-to-r from-blue-50 to-indigo-50 ">
         <div className="container flex justify-between w-full space-x-4 overflow-x-auto scrolling-touch bg-white rounded-full shadow-xl no-scrollbar">
           {/* Total Items */}
           <div className="flex flex-col items-center w-1/4 p-4">
@@ -118,16 +118,115 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      {/* =========================================================================================*/}
+
+      <div className="px-6 py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="container mx-auto">
+          <h2 className="mb-12 text-5xl font-bold text-center text-gray-800">
+            How It Works
+          </h2>
+          <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3">
+            {/* Step 1 */}
+            <div className="relative p-8 transition duration-300 transform bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl">
+              <div className="absolute top-0 p-4 text-white transform -translate-x-1/2 -translate-y-1/2 bg-purple-500 rounded-full shadow-lg left-1/2">
+                <svg
+                  className="w-10 h-10" // Increased icon size
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16 12V16M12 12V16M8 12V16M12 4v4m8 2a8 8 0 11-16 0 8 8 0 0116 0z"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="mt-8 mb-4 text-3xl font-semibold text-gray-800">
+                Step 1: Register
+              </h3>
+              <p className="text-lg text-gray-600">
+                {" "}
+                {/* Increased paragraph font size */}
+                Create an account to participate in auctions and track your
+                bids.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="relative p-8 transition duration-300 transform bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl">
+              <div className="absolute top-0 p-4 text-white transform -translate-x-1/2 -translate-y-1/2 bg-pink-500 rounded-full shadow-lg left-1/2">
+                <svg
+                  className="w-10 h-10" // Increased icon size
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 10l4.553-4.553a1.5 1.5 0 10-2.121-2.121L12 8.879 6.568 3.447a1.5 1.5 0 00-2.121 2.121L9 10M19 10v6a2 2 0 01-2 2H7a2 2 0 01-2-2v-6"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="mt-8 mb-4 text-3xl font-semibold text-gray-800">
+                Step 2: Browse Auctions
+              </h3>
+              <p className="text-lg text-gray-600">
+                {" "}
+                {/* Increased paragraph font size */}
+                Find auctions that interest you and place your bids in
+                real-time.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="relative p-8 transition duration-300 transform bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl">
+              <div className="absolute top-0 p-4 text-white transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full shadow-lg left-1/2">
+                <svg
+                  className="w-10 h-10" // Increased icon size
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M7 16v-2m0 0V8m0 6h8m4 4h.01M3 16h.01M12 20v-4m0 0H8m4 0h4"
+                  ></path>
+                </svg>
+              </div>
+              <h3 className="mt-8 mb-4 text-3xl font-semibold text-gray-800">
+                Step 3: Win & Collect
+              </h3>
+              <p className="text-lg text-gray-600">
+                {" "}
+                {/* Increased paragraph font size */}
+                Win auctions and get notified instantly. Securely pay and
+                receive your items.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* =================================================================================== */}
       {/* About Section */}
-      <div>
-        <div className="grid items-center gap-4 bg-gray-100 px-14 grid-cols-1mx-auto md:grid-cols-2">
+      <div className="relative py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="grid items-center gap-10 px-10 mx-auto max-w-7xl md:grid-cols-2">
           {/* Text Content */}
-          <div className="flex flex-col justify-center h-full text-center">
-            <h2 className="mb-8 text-4xl font-bold text-center text-">
+          <div className="flex flex-col justify-center text-center md:text-left">
+            <h2 className="mb-6 text-5xl font-extrabold text-gray-800">
               About Us
             </h2>
-            <p className="text-2xl leading-relaxed text-center text-black">
+            <p className="text-xl leading-relaxed text-gray-700">
               Auction House is a leading online auction platform where you can
               find a variety of unique products. From antiques to modern
               gadgets, we provide a safe and secure way to participate in
@@ -136,42 +235,60 @@ const Home = () => {
           </div>
 
           {/* Icon/Image */}
-          <div className="flex justify-center p-20 ">
+          <div className="flex justify-center md:justify-end">
             <img
               src={about}
               alt="About us illustration"
-              className="w-3/5 h-auto "
+              className="w-4/5 h-auto transition-transform duration-500 transform rounded-lg shadow-lg hover:scale-105"
             />
           </div>
         </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-100 rounded-full opacity-50 md:w-60 md:h-60"></div>
+        <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-100 rounded-full opacity-50 md:w-60 md:h-60"></div>
       </div>
 
-      <div className="py-16 bg-gray-100 ">
-        <div className="container mx-auto ">
-          <h2 className="mb-8 text-4xl font-bold text-center">
+      <div className="py-16 bg-gradient-to-r from-[#B29CCB] via-[#E0A3C2] to-[#F7D4D3]">
+        <div className="container px-8 mx-auto">
+          <h2 className="mb-10 text-4xl font-bold text-center text-gray-800">
             Why Choose Us?
           </h2>
-          <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 py-20 transition duration-300 bg-white shadow-2xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
-              <FaList className="mx-auto mb-4 text-4xl font-bold text-black " />
-              <h3 className="mb-4 text-xl font-semibold">Wide Selection</h3>
-              <p className="text-gray-600 ">
+          <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3">
+            {/* Card 1 */}
+            <div className="relative p-10 py-20 overflow-hidden bg-white cursor-pointer bg-opacity-60 backdrop-blur-md ">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-50 opacity-10"></div>
+              <FaList className="mx-auto mb-6 text-5xl font-bold text-indigo-600" />
+              <h3 className="mb-4 text-2xl font-semibold text-gray-800">
+                Wide Selection
+              </h3>
+              <p className="text-lg text-gray-600">
                 We offer a wide variety of auctions, from rare collectibles to
                 the latest gadgets.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 bg-white shadow-2xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
-              <FaLock className="mx-auto mb-4 text-4xl font-bold text-black" />
-              <h3 className="mb-4 text-xl font-semibold">Secure Bidding</h3>
-              <p className="text-gray-600 ">
+
+            {/* Card 2 */}
+            <div className="relative p-10 py-20 overflow-hidden bg-white cursor-pointer bg-opacity-60 backdrop-blur-md ">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-50 opacity-10"></div>
+              <FaLock className="mx-auto mb-6 text-5xl font-bold text-blue-600" />
+              <h3 className="mb-4 text-2xl font-semibold text-gray-800">
+                Secure Bidding
+              </h3>
+              <p className="text-lg text-gray-600">
                 Our platform ensures a safe and secure bidding experience for
                 all users.
               </p>
             </div>
-            <div className="p-8 py-20 transition duration-300 bg-white shadow-2xl cursor-pointer px-28 hover:scale-95 rounded-3xl">
-              <FaBell className="mx-auto mb-4 text-4xl font-bold text-black" />
-              <h3 className="mb-4 text-xl font-semibold">Real-time Updates</h3>
-              <p className="text-gray-600 ">
+
+            {/* Card 3 */}
+            <div className="relative p-10 py-20 overflow-hidden bg-white cursor-pointer bg-opacity-60 ">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-50 opacity-10"></div>
+              <FaBell className="mx-auto mb-6 text-5xl font-bold text-green-600" />
+              <h3 className="mb-4 text-2xl font-semibold text-gray-800">
+                Real-time Updates
+              </h3>
+              <p className="text-lg text-gray-600">
                 Get real-time notifications and updates on your bids and
                 auctions.
               </p>
@@ -185,40 +302,7 @@ const Home = () => {
       {/* Testimonials Section */}
 
       {/* ================================================================================== */}
-      <div className="px-6 py-16 text-white bg-gray-100">
-        <div className="container mx-auto">
-          <h2 className="mb-8 text-4xl font-bold text-center text-black">
-            How It Works
-          </h2>
-          <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3">
-            <div className="p-8 bg-[#7E4EAA] rounded-lg shadow-lg">
-              <h3 className="mb-4 text-2xl font-semibold">Step 1: Register</h3>
-              <p>
-                Create an account to participate in auctions and track your
-                bids.
-              </p>
-            </div>
-            <div className="p-8 bg-[#7E4EAA] rounded-lg shadow-lg">
-              <h3 className="mb-4 text-2xl font-semibold">
-                Step 2: Browse Auctions
-              </h3>
-              <p>
-                Find auctions that interest you and place your bids in
-                real-time.
-              </p>
-            </div>
-            <div className="p-8 bg-[#7E4EAA] rounded-lg shadow-lg">
-              <h3 className="mb-4 text-2xl font-semibold">
-                Step 3: Win & Collect
-              </h3>
-              <p>
-                Win auctions and get notified instantly. Securely pay and
-                receive your items.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+
       {/* ======================================================================================== */}
       <div className="px-6 py-16 bg-gray-100">
         <div className="container mx-auto">
