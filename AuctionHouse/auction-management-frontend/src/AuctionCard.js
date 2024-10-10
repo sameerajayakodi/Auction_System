@@ -78,14 +78,10 @@ const AuctionCard = ({ auction }) => {
   };
 
   return (
-    <div className="relative w-full h-full p-6 py-2 group">
-      <div className="relative p-2 transition-opacity duration-300 border-2 group-hover:opacity-40">
+    <div className="relative w-full h-full p-6 py-2 bg-white rounded-md group">
+      <div className="relative p-2 transition-opacity duration-300 group-hover:opacity-40">
         {/* Image Section */}
-        <img
-          src={image}
-          alt={title}
-          className="object-cover w-full h-full border "
-        />
+        <img src={image} alt={title} className="object-cover w-full h-full " />
         {/* End Date Badge */}
         <span
           className={`absolute px-3 py-1 text-xs font-semibold text-white ${badgeColor} rounded-full shadow-md top-2 right-2`}
