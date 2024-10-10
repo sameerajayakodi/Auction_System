@@ -112,7 +112,7 @@ const AuctionListing = () => {
   };
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
       {/* Top Bar */}
 
       <div className="container mx-auto lg:px-20 sm:px-6">
@@ -168,7 +168,7 @@ const AuctionListing = () => {
         </div>
 
         {/* Auction Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
           {filteredAuctions.length > 0 ? (
             filteredAuctions.map((auction) => (
               <Link
