@@ -26,7 +26,7 @@ const FilterSidebar = ({ onApplyFilters, onClose }) => {
       ></div>
 
       {/* Sidebar */}
-      <div className="fixed top-0 left-0 z-50 h-full p-6 transition-transform transform translate-x-0 bg-white shadow-lg w-80">
+      <div className="fixed top-0 left-0 z-50 h-full p-6 transition-transform transform translate-x-0 bg-blue-200 shadow-lg w-80">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-semibold">Filters</h2>
