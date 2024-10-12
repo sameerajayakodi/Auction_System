@@ -58,7 +58,7 @@ const AuctionListing = () => {
       {
         id: 4,
         title: "Luxury Watch",
-        description: "A luxurious watch with a sleek design.",
+        description: "A luxurious watch with a sleek design and Brown Color.",
         currentBid: 5000,
         image: watch,
         endDate: "2024-09-17T15:00:00Z",
@@ -112,21 +112,21 @@ const AuctionListing = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
+    <div className="bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 ">
       {/* Top Bar */}
 
-      <div className="container mx-auto lg:px-20 sm:px-6">
+      <div className="container mx-auto lg:px-20 sm:px-6 ">
         {/* Header */}
-        <div className="flex items-start justify-center py-2">
-          <div className="relative flex ">
+        <div className="flex items-start justify-center py-6">
+          <div className="relative flex">
             <input
               type="text"
               placeholder="Search Items..."
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
-              className="p-2 text-sm border border-gray-300 shadow-sm w-96 focus:outline-none focus:ring-2 focus:ring-slate-800"
+              className="p-4 text-sm border border-gray-300 rounded-full shadow-sm w-96 focus:outline-none focus:ring-2 focus:ring-slate-800"
             />
-            <span className="absolute right-0 p-2 text-gray-600 bg-gray-200 border-t border-b border-gray-200 ">
+            <span className="absolute right-0 p-4 text-gray-600 bg-gray-200 border-t border-b border-gray-200 rounded-full ">
               {/* Inline SVG for search icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +174,7 @@ const AuctionListing = () => {
               <Link
                 to={`/auctions/${auction.id}`}
                 key={auction.id}
-                className="block hover:shadow-lg"
+                className="block transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
               >
                 <AuctionCard auction={auction} />
               </Link>
