@@ -1,18 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here
+
+    try {
+      const response = await fetch("https://localhost:44377/api/users/Login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        setLoginError(errorData.message || "Login failed.");
+      } else {
+        // Handle successful login
+        // Redirect to dashboard or home page
+        navigate("/dashboard"); // Update to your desired path
+      }
+    } catch (error) {
+      setLoginError("Network error, please try again.");
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
-      <div className="w-full max-w-2xl p-10 ">
+      <div className="w-full max-w-2xl p-10">
         {/* Optional: Logo */}
         <div className="flex justify-center mb-6">
           <p className="text-xl font-bold text-gray-500">AuctionHouse.lk</p>
@@ -23,6 +45,7 @@ const Login = () => {
         </h2>
 
         <form onSubmit={handleSubmit}>
+          {loginError && <p className="mb-4 text-red-600">{loginError}</p>}
           <div className="mb-6">
             <label className="block mb-2 text-sm font-medium text-gray-700">
               Email Address
