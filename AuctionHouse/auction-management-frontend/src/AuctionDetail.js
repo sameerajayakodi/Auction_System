@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import ConfirmationModal from "../src/components/ConfirmationModal"; // Import the modal
 import Notification from "../src/components/Notification"; // Import the notification component
 import BidHistory from "./BidHistory";
-import ChairImage from "./images/yellowChair.jpg"; // Make sure the path is correct
+import ChairImage from "./images/yellowChair.jpg"; // Placeholder image if needed
 
 const AuctionDetail = () => {
   const { id } = useParams();
@@ -12,34 +12,50 @@ const AuctionDetail = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const [notification, setNotification] = useState(""); // Notification state
 
-  // Mock auction data
-  const mockAuctionData = {
-    id: id,
-    title: "Modern Yellow Chair",
-    description:
-      "A sleek and modern chair perfect for any living space. Built with premium materials to offer comfort and style.",
-    currentBid: 420,
-    image: ChairImage,
-    endTime: "2 hours",
-  };
-
+  // Fetch auction details from the backend
   useEffect(() => {
-    // Simulate fetching data
-    setTimeout(() => {
-      setAuction(mockAuctionData);
-    }, 1000); // Simulate a delay of 1 second
+    const fetchAuctionDetails = async () => {
+      try {
+        const response = await fetch(`https://your-api-url.com/auctions/${id}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch auction details");
+        }
+        const data = await response.json();
+        setAuction(data);
+      } catch (error) {
+        console.error(error);
+        setNotification("Failed to load auction details.");
+      }
+    };
+
+    fetchAuctionDetails();
   }, [id]);
 
-  const placeBid = () => {
-    // Simulate placing a bid and updating the current bid
-    setTimeout(() => {
-      setAuction((prevAuction) => ({
-        ...prevAuction,
-        currentBid: prevAuction.currentBid + Number(bidAmount),
-      }));
-      setNotification("Bid placed successfully!"); // Show success notification
-      setBidAmount(""); // Clear the bid amount input
-    }, 500); // Simulate a delay of 0.5 seconds
+  const placeBid = async () => {
+    try {
+      const response = await fetch(
+        `https://your-api-url.com/auctions/${id}/bid`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ bidAmount: Number(bidAmount) }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to place bid");
+      }
+
+      const updatedAuction = await response.json(); // Assume the backend returns the updated auction data
+      setAuction(updatedAuction);
+      setNotification("Bid placed successfully!");
+      setBidAmount(""); // Clear the input field
+    } catch (error) {
+      console.error(error);
+      setNotification("Failed to place bid. Please try again.");
+    }
   };
 
   const handlePlaceBid = () => {
@@ -56,7 +72,7 @@ const AuctionDetail = () => {
   };
 
   const handleNotificationClose = () => {
-    setNotification(""); // Close notification after 3 seconds
+    setNotification(""); // Close notification
   };
 
   if (!auction) return <div>Loading...</div>;
@@ -64,16 +80,16 @@ const AuctionDetail = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-100 to-gray-300 md:w-screen">
       <div className="flex flex-col h-full bg-white rounded-none shadow-2xl md:grid md:grid-cols-2 md:h-screen">
-        {/* Top Section - Auction Image (will stack on mobile) */}
+        {/* Top Section - Auction Image */}
         <div className="w-full md:h-full">
           <img
-            src={auction.image}
+            src={auction.image || ChairImage} // Use placeholder image if auction image is not available
             alt={auction.title}
             className="object-cover w-full h-full"
           />
         </div>
 
-        {/* Bottom Section - Auction Details (stacked on mobile) */}
+        {/* Bottom Section - Auction Details */}
         <div className="flex flex-col justify-center w-2/3 p-6 bg-white lg:ml-auto lg:mr-auto ">
           <h2 className="mb-4 text-3xl font-bold text-center text-gray-800">
             {auction.title}
