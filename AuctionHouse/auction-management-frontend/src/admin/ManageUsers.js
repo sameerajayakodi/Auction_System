@@ -12,16 +12,15 @@ const ManageUsers = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch users from an API or use mock data
     const fetchUsers = async () => {
-      // Example data
-      const mockUsers = [
-        { id: 1, name: "John Doe", email: "john@example.com", role: "User" },
-        { id: 2, name: "Jane Smith", email: "jane@example.com", role: "Admin" },
-      ];
-      setUsers(mockUsers);
+      try {
+        const response = await fetch("/api/users"); // Replace with your API URL
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
     };
-
     fetchUsers();
   }, []);
 
@@ -30,10 +29,20 @@ const ManageUsers = () => {
     setIsEditModalOpen(true);
   };
 
-  const handleSaveUser = (updatedUser) => {
-    setUsers(
-      users.map((user) => (user.id === updatedUser.id ? updatedUser : user))
-    );
+  const handleSaveUser = async (updatedUser) => {
+    try {
+      await fetch(`/api/users/${updatedUser.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUser),
+      });
+      setUsers(
+        users.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+      );
+      setIsEditModalOpen(false);
+    } catch (error) {
+      console.error("Error saving user:", error);
+    }
   };
 
   const handleDeleteUser = (userId) => {
@@ -41,11 +50,14 @@ const ManageUsers = () => {
     setIsDeleteModalOpen(true);
   };
 
-  const handleConfirmDelete = () => {
-    if (userToDelete) {
+  const handleConfirmDelete = async () => {
+    try {
+      await fetch(`/api/users/${userToDelete}`, { method: "DELETE" });
       setUsers(users.filter((user) => user.id !== userToDelete));
+      setIsDeleteModalOpen(false);
+    } catch (error) {
+      console.error("Error deleting user:", error);
     }
-    setIsDeleteModalOpen(false);
   };
 
   return (
