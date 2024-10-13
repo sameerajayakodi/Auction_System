@@ -3,11 +3,13 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const AddAuctionModal = ({ isOpen, onClose, onSave, auction }) => {
+const AddAuctionModal = ({ isOpen, onClose, auction, apiEndpoint }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startingBid, setStartingBid] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [loading, setLoading] = useState(false); // to handle loading state
+  const [error, setError] = useState(null); // to handle errors
 
   useEffect(() => {
     if (auction) {
@@ -18,9 +20,39 @@ const AddAuctionModal = ({ isOpen, onClose, onSave, auction }) => {
     }
   }, [auction]);
 
-  const handleSave = () => {
-    onSave({ title, description, startingBid, endDate });
-    onClose();
+  const handleSave = async () => {
+    // Validate the data before sending (optional but recommended)
+    if (!title || !description || !startingBid || !endDate) {
+      setError("All fields are required");
+      return;
+    }
+
+    setLoading(true); // Start loading
+    setError(null); // Clear any previous errors
+
+    const auctionData = { title, description, startingBid, endDate };
+
+    try {
+      const response = await fetch(apiEndpoint, {
+        method: auction ? "PUT" : "POST", // Use PUT for editing and POST for adding
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(auctionData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save auction. Please try again.");
+      }
+
+      const result = await response.json();
+      console.log("Auction saved successfully:", result);
+      onClose(); // Close modal after successful save
+    } catch (error) {
+      setError(error.message); // Set error message if any issue occurs
+    } finally {
+      setLoading(false); // End loading
+    }
   };
 
   return (
@@ -35,6 +67,7 @@ const AddAuctionModal = ({ isOpen, onClose, onSave, auction }) => {
         <h2 className="mb-4 text-2xl font-bold">
           {auction ? "Edit Auction" : "Add New Auction"}
         </h2>
+        {error && <div className="mb-4 text-red-500">{error}</div>}
         <form>
           <div className="mb-4">
             <label className="block mb-2 text-lg font-semibold" htmlFor="title">
@@ -102,8 +135,9 @@ const AddAuctionModal = ({ isOpen, onClose, onSave, auction }) => {
               type="button"
               onClick={handleSave}
               className="px-4 py-2 text-white bg-blue-500 rounded-lg"
+              disabled={loading}
             >
-              Save
+              {loading ? "Saving..." : "Save"}
             </button>
             <button
               type="button"
