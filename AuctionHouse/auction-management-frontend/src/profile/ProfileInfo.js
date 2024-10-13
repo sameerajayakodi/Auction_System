@@ -1,8 +1,7 @@
-// profile/ProfileInfo.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ConfirmationModal from "../components/ConfirmationModal";
-import profile from "../images/1 (5).jpg";
-import cover from "../images/registerImage.jpg"; // Adjust path as needed
+import profile from "../images/1 (5).jpg"; // Correct profile image path
+import cover from "../images/registerImage.jpg"; // Correct cover image path
 
 const ProfileInfo = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -14,6 +13,21 @@ const ProfileInfo = () => {
     location: "California",
     bio: "Hi 👋, I'm Ronald, a passionate UX designer with 10 years of experience in creating intuitive and user-centered digital experiences.",
   });
+
+  useEffect(() => {
+    // Fetch profile data from backend when the component mounts
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch("/api/profile"); // Replace with actual API endpoint
+        const data = await response.json();
+        setProfileInfo(data);
+      } catch (error) {
+        console.error("Failed to fetch profile data:", error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -27,10 +41,29 @@ const ProfileInfo = () => {
     setIsModalOpen(true);
   };
 
-  const handleModalConfirm = () => {
-    // Save logic here (e.g., API call)
+  const handleModalConfirm = async () => {
+    try {
+      // Save updated profile info to backend (replace API endpoint with the actual one)
+      const response = await fetch("/api/profile", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(profileInfo),
+      });
+
+      if (response.ok) {
+        // Handle success (e.g., show a success message)
+        setIsEditing(false);
+      } else {
+        // Handle failure (e.g., show an error message)
+        console.error("Failed to save profile data");
+      }
+    } catch (error) {
+      console.error("Failed to save profile data:", error);
+    }
+
     setIsModalOpen(false);
-    setIsEditing(false);
   };
 
   const handleModalClose = () => {
@@ -47,13 +80,13 @@ const ProfileInfo = () => {
       <div className="p-6 bg-white border-2 ">
         <div className="relative mb-2">
           <img
-            src={cover} // Replace with the actual URL of the cover photo
+            src={cover} // Cover photo
             alt="Cover"
             className="object-cover w-full h-32 rounded-t-lg"
           />
           <div className="absolute bottom-0 left-4">
             <img
-              src={profile} // Replace with the actual URL of the profile photo
+              src={profile} // Profile photo
               alt="Profile"
               className="w-24 h-24 border-4 border-white rounded-full"
             />
@@ -106,7 +139,7 @@ const ProfileInfo = () => {
           </div>
         </div>
         <div className="mt-6">
-          <label className="text-gray-700">Address</label>
+          <label className="text-gray-700">Bio</label>
           <textarea
             name="bio"
             value={profileInfo.bio}
