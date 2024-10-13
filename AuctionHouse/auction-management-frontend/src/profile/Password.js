@@ -1,3 +1,4 @@
+import axios from "axios"; // Assuming you're using axios for API calls
 import React, { useState } from "react";
 import ConfirmationModal from "../components/ConfirmationModal";
 
@@ -10,6 +11,7 @@ const Password = () => {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Validate password before updating
   const validatePassword = () => {
     if (newPassword !== confirmNewPassword) {
       setError("New password and confirmation do not match.");
@@ -25,18 +27,33 @@ const Password = () => {
 
   const handleUpdatePassword = () => {
     if (!validatePassword()) return;
-    setIsModalOpen(true);
+    setIsModalOpen(true); // Show confirmation modal before submitting
   };
 
-  const confirmUpdatePassword = () => {
+  // Function to call API to update the password
+  const confirmUpdatePassword = async () => {
     setLoading(true);
-    // Add your update password logic here (e.g., API call)
-    setTimeout(() => {
-      // Simulate API call
+
+    try {
+      // Replace the URL with your actual backend API endpoint
+      const response = await axios.post(
+        "https://api.example.com/update-password",
+        {
+          currentPassword,
+          newPassword,
+        }
+      );
+
       setLoading(false);
       setSuccess("Password updated successfully.");
+      setError("");
       setIsModalOpen(false);
-    }, 2000);
+    } catch (err) {
+      setLoading(false);
+      setError("Failed to update password. Please try again.");
+      setSuccess("");
+      setIsModalOpen(false);
+    }
   };
 
   const cancelUpdatePassword = () => {
@@ -45,7 +62,7 @@ const Password = () => {
 
   return (
     <div className="p-6 border-2">
-      <h2 className="mb-6 text-2xl font-bold ">Change Password</h2>
+      <h2 className="mb-6 text-2xl font-bold">Change Password</h2>
       <div className="p-6 bg-white">
         {error && <div className="mb-4 text-red-600">{error}</div>}
         {success && <div className="mb-4 text-green-600">{success}</div>}
