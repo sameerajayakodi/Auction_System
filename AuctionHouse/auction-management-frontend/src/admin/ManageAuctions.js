@@ -1,57 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddAuctionModal from "./AddAuctionModal"; // Import the modal
 import DeleteConfirmationModal from "./DeleteConfirmationModal"; // Import the delete confirmation modal
 
 const ManageAuctions = () => {
-  // Initialize with dummy data
-  const [auctions, setAuctions] = useState([
-    {
-      title: "Auction 1",
-      description: "Description for Auction 1",
-      startingBid: "100",
-      endDate: "2024-10-01T12:00",
-    },
-    {
-      title: "Auction 2",
-      description: "Description for Auction 2",
-      startingBid: "200",
-      endDate: "2024-10-02T12:00",
-    },
-    {
-      title: "Auction 3",
-      description: "Description for Auction 3",
-      startingBid: "300",
-      endDate: "2024-10-03T12:00",
-    },
-    {
-      title: "Auction 4",
-      description: "Description for Auction 4",
-      startingBid: "400",
-      endDate: "2024-10-04T12:00",
-    },
-    {
-      title: "Auction 5",
-      description: "Description for Auction 5",
-      startingBid: "500",
-      endDate: "2024-10-05T12:00",
-    },
-  ]);
+  const [auctions, setAuctions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
   const [deletingIndex, setDeletingIndex] = useState(null);
 
-  const handleAddAuction = (newAuction) => {
+  // Fetch auctions from the backend API on component mount
+  useEffect(() => {
+    fetchAuctions();
+  }, []);
+
+  const fetchAuctions = async () => {
+    try {
+      const response = await fetch("/api/auctions"); // Adjust the API endpoint URL
+      const data = await response.json();
+      setAuctions(data);
+    } catch (error) {
+      console.error("Error fetching auctions:", error);
+    }
+  };
+
+  const handleAddAuction = async (newAuction) => {
     if (editingIndex !== null) {
-      // Update the existing auction
-      const updatedAuctions = auctions.map((auction, index) =>
-        index === editingIndex ? newAuction : auction
-      );
-      setAuctions(updatedAuctions);
-      setEditingIndex(null);
+      // Update existing auction
+      try {
+        await fetch(`/api/auctions/${auctions[editingIndex].id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newAuction),
+        });
+        fetchAuctions(); // Refresh the auctions
+      } catch (error) {
+        console.error("Error updating auction:", error);
+      }
     } else {
-      // Add new auction
-      setAuctions([...auctions, newAuction]);
+      // Add a new auction
+      try {
+        await fetch("/api/auctions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newAuction),
+        });
+        fetchAuctions(); // Refresh the auctions
+      } catch (error) {
+        console.error("Error adding auction:", error);
+      }
     }
     setIsModalOpen(false);
   };
@@ -66,8 +67,15 @@ const ManageAuctions = () => {
     setIsDeleteModalOpen(true);
   };
 
-  const confirmDeleteAuction = () => {
-    setAuctions(auctions.filter((_, i) => i !== deletingIndex));
+  const confirmDeleteAuction = async () => {
+    try {
+      await fetch(`/api/auctions/${auctions[deletingIndex].id}`, {
+        method: "DELETE",
+      });
+      fetchAuctions(); // Refresh the auctions
+    } catch (error) {
+      console.error("Error deleting auction:", error);
+    }
     setDeletingIndex(null);
     setIsDeleteModalOpen(false);
   };
