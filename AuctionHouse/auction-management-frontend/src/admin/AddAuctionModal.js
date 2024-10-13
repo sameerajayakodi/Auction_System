@@ -8,8 +8,8 @@ const AddAuctionModal = ({ isOpen, onClose, auction, apiEndpoint }) => {
   const [description, setDescription] = useState("");
   const [startingBid, setStartingBid] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [loading, setLoading] = useState(false); // to handle loading state
-  const [error, setError] = useState(null); // to handle errors
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (auction) {
@@ -17,24 +17,38 @@ const AddAuctionModal = ({ isOpen, onClose, auction, apiEndpoint }) => {
       setDescription(auction.description);
       setStartingBid(auction.startingBid);
       setEndDate(auction.endDate);
+    } else {
+      setTitle("");
+      setDescription("");
+      setStartingBid("");
+      setEndDate("");
     }
   }, [auction]);
 
   const handleSave = async () => {
-    // Validate the data before sending (optional but recommended)
     if (!title || !description || !startingBid || !endDate) {
       setError("All fields are required");
       return;
     }
 
-    setLoading(true); // Start loading
-    setError(null); // Clear any previous errors
+    if (isNaN(startingBid) || startingBid <= 0) {
+      setError("Starting bid must be a positive number");
+      return;
+    }
+
+    if (new Date(endDate) <= new Date()) {
+      setError("End date must be in the future");
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
 
     const auctionData = { title, description, startingBid, endDate };
 
     try {
       const response = await fetch(apiEndpoint, {
-        method: auction ? "PUT" : "POST", // Use PUT for editing and POST for adding
+        method: auction ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -42,16 +56,22 @@ const AddAuctionModal = ({ isOpen, onClose, auction, apiEndpoint }) => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to save auction. Please try again.");
+        let errorMessage = "Failed to save auction.";
+        if (response.status === 400) {
+          errorMessage = "Invalid data provided.";
+        } else if (response.status === 500) {
+          errorMessage = "Server error, please try again later.";
+        }
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
       console.log("Auction saved successfully:", result);
-      onClose(); // Close modal after successful save
+      onClose(); // Close modal after success
     } catch (error) {
-      setError(error.message); // Set error message if any issue occurs
+      setError(error.message);
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
 
