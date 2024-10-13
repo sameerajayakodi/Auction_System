@@ -7,21 +7,62 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [registrationError, setRegistrationError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (password !== confirmPassword) {
       setPasswordError("Passwords do not match.");
+      return; // Early return if passwords do not match
     } else {
       setPasswordError("");
-      // Handle registration logic here
+    }
+
+    setLoading(true); // Start loading state
+    setRegistrationError(""); // Reset any previous error
+
+    try {
+      const response = await fetch(
+        "https://localhost:44377/api/users/CreateUser",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            phone,
+            password,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Registration failed. Please try again.");
+      }
+
+      // Optionally, redirect to the login page after successful registration
+      // You can use useNavigate from react-router-dom for navigation
+      // navigate("/login");
+
+      // Reset the form after successful registration
+      setEmail("");
+      setPhone("");
+      setPassword("");
+      setConfirmPassword("");
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setRegistrationError(error.message); // Set registration error message
+    } finally {
+      setLoading(false); // Stop loading state
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200">
       <div className="w-full max-w-2xl p-10">
-        {/* Optional: Logo */}
         <div className="flex justify-center mb-6">
           <p className="text-xl font-bold text-gray-500">AuctionHouse.lk</p>
         </div>
@@ -108,11 +149,16 @@ const Register = () => {
             </div>
           </div>
 
+          {registrationError && (
+            <p className="mb-4 text-sm text-red-600">{registrationError}</p>
+          )}
+
           <button
             type="submit"
             className="w-full px-4 py-3 text-sm font-semibold text-white transition duration-200 ease-in-out bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={loading} // Disable the button while loading
           >
-            Register Your Account
+            {loading ? "Registering..." : "Register Your Account"}
           </button>
         </form>
 
