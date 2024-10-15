@@ -3,13 +3,14 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
-const AddAuctionModal = ({ isOpen, onClose, auction, apiEndpoint }) => {
+const AddAuctionModal = ({ isOpen, onClose, auction }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startingBid, setStartingBid] = useState("");
   const [endDate, setEndDate] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const apiEndpoint = "https://localhost:44377/api/auction";
 
   useEffect(() => {
     if (auction) {
