@@ -16,7 +16,7 @@ const ManageAuctions = () => {
 
   const fetchAuctions = async () => {
     try {
-      const response = await fetch("/api/auctions"); // Adjust the API endpoint URL
+      const response = await fetch("https://localhost:44377/api/auction"); // Updated API endpoint
       const data = await response.json();
       setAuctions(data);
     } catch (error) {
@@ -28,13 +28,17 @@ const ManageAuctions = () => {
     if (editingIndex !== null) {
       // Update existing auction
       try {
-        await fetch(`/api/auctions/${auctions[editingIndex].id}`, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newAuction),
-        });
+        await fetch(
+          `https://localhost:44377/api/auction/${auctions[editingIndex].id}`,
+          {
+            // Updated API endpoint
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newAuction),
+          }
+        );
         fetchAuctions(); // Refresh the auctions
       } catch (error) {
         console.error("Error updating auction:", error);
@@ -42,7 +46,8 @@ const ManageAuctions = () => {
     } else {
       // Add a new auction
       try {
-        await fetch("/api/auctions", {
+        await fetch("https://localhost:44377/api/auction", {
+          // Updated API endpoint
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -69,9 +74,13 @@ const ManageAuctions = () => {
 
   const confirmDeleteAuction = async () => {
     try {
-      await fetch(`/api/auctions/${auctions[deletingIndex].id}`, {
-        method: "DELETE",
-      });
+      await fetch(
+        `https://localhost:44377/api/auction/${auctions[deletingIndex].id}`,
+        {
+          // Updated API endpoint
+          method: "DELETE",
+        }
+      );
       fetchAuctions(); // Refresh the auctions
     } catch (error) {
       console.error("Error deleting auction:", error);
