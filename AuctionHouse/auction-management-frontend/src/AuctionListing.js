@@ -3,11 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuctionCard from "./AuctionCard";
 import FilterSidebar from "./FilterSidebar";
-import pocketWatch from "./images/1 (1).jpg";
-import watch from "./images/1 (3).jpg";
-import painting from "./images/1 (4).jpg";
-import car from "./images/1 (5).jpg";
-import antiqueVase from "./images/vase.jpg";
 
 // AuctionListing Component
 const AuctionListing = () => {
@@ -22,61 +17,19 @@ const AuctionListing = () => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Dummy auction data
+  // Fetch auction data from backend API
   useEffect(() => {
-    const dummyAuctions = [
-      {
-        id: 1,
-        title: "Antique Vase",
-        description: "A rare antique vase from the Ming dynasty.",
-        currentBid: 150,
-        image: antiqueVase,
-        endDate: "2024-09-17T09:00:00Z",
-        category: "Antiques",
-        status: "On sale",
-      },
-      {
-        id: 2,
-        title: "Vintage Car",
-        description: "A well-preserved vintage car from the 1960s.",
-        currentBid: 20000,
-        image: car,
-        endDate: "2024-09-18T14:00:00Z",
-        category: "Vehicles",
-        status: "Ending soon",
-      },
-      {
-        id: 3,
-        title: "Rare Painting",
-        description: "A masterpiece painting from a renowned artist.",
-        currentBid: 3000,
-        image: painting,
-        endDate: "2024-09-16T13:00:00Z",
-        category: "Art",
-        status: "On sale",
-      },
-      {
-        id: 4,
-        title: "Luxury Watch",
-        description: "A luxurious watch with a sleek design and Brown Color.",
-        currentBid: 5000,
-        image: watch,
-        endDate: "2024-09-17T15:00:00Z",
-        category: "Accessories",
-        status: "Ending soon",
-      },
-      {
-        id: 5,
-        title: "Pocket Watch",
-        description: "A pocket watch with intricate engravings.",
-        currentBid: 200,
-        image: pocketWatch,
-        endDate: "2024-09-21T14:00:00Z",
-        category: "Accessories",
-        status: "On sale",
-      },
-    ];
-    setAuctions(dummyAuctions);
+    const fetchAuctions = async () => {
+      try {
+        const response = await fetch("https://localhost:44377/api/auction");
+        const data = await response.json();
+        setAuctions(data);
+      } catch (error) {
+        console.error("Error fetching auctions:", error);
+      }
+    };
+
+    fetchAuctions();
   }, []);
 
   // Filter auctions based on filters and search input
@@ -114,7 +67,6 @@ const AuctionListing = () => {
   return (
     <div className="bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 ">
       {/* Top Bar */}
-
       <div className="container mx-auto lg:px-20 sm:px-6 ">
         {/* Header */}
         <div className="flex items-start justify-center py-6">
@@ -160,7 +112,7 @@ const AuctionListing = () => {
               onChange={(e) => setSortOption(e.target.value)}
               className="p-2 text-sm text-gray-600 border border-gray-300 focus:ring-2 focus:ring-black"
             >
-              <option value="Relevance ">Relevance</option>
+              <option value="Relevance">Relevance</option>
               <option value="Price: Low to High">Price: Low to High</option>
               <option value="Price: High to Low">Price: High to Low</option>
             </select>
