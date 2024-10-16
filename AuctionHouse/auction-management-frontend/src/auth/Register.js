@@ -15,15 +15,18 @@ const Register = () => {
 
     if (password !== confirmPassword) {
       setPasswordError("Passwords do not match.");
-      return; // Early return if passwords do not match
+      return;
     } else {
       setPasswordError("");
     }
 
-    setLoading(true); // Start loading state
-    setRegistrationError(""); // Reset any previous error
+    setLoading(true);
+    setRegistrationError("");
 
     try {
+      // Log the data to ensure it's correct before sending
+      console.log("Data to be sent:", { email, phone, password });
+
       const response = await fetch(
         "https://localhost:44377/api/users/CreateUser",
         {
@@ -40,12 +43,14 @@ const Register = () => {
       );
 
       if (!response.ok) {
-        throw new Error("Registration failed. Please try again.");
+        const errorResponse = await response.text(); // Optional: read the response body
+        throw new Error(
+          errorResponse || "Registration failed. Please try again."
+        );
       }
 
-      // Optionally, redirect to the login page after successful registration
-      // You can use useNavigate from react-router-dom for navigation
-      // navigate("/login");
+      // Optionally redirect to the login page after successful registration
+      // e.g., navigate("/login");
 
       // Reset the form after successful registration
       setEmail("");
@@ -54,9 +59,9 @@ const Register = () => {
       setConfirmPassword("");
     } catch (error) {
       console.error("Error during registration:", error);
-      setRegistrationError(error.message); // Set registration error message
+      setRegistrationError(error.message);
     } finally {
-      setLoading(false); // Stop loading state
+      setLoading(false);
     }
   };
 
@@ -84,7 +89,7 @@ const Register = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 text-sm text-gray-700 transition duration-200 ease-in-out bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="you@example.com"
               required
             />
@@ -102,7 +107,7 @@ const Register = () => {
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full px-4 py-3 text-sm text-gray-700 transition duration-200 ease-in-out bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="e.g., +1 234 567 8901"
               required
             />
@@ -121,7 +126,7 @@ const Register = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 text-sm text-gray-700 transition duration-200 ease-in-out bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="••••••••"
                 required
               />
@@ -139,7 +144,7 @@ const Register = () => {
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-3 text-sm text-gray-700 transition duration-200 ease-in-out bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-3 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="••••••••"
                 required
               />
@@ -155,8 +160,8 @@ const Register = () => {
 
           <button
             type="submit"
-            className="w-full px-4 py-3 text-sm font-semibold text-white transition duration-200 ease-in-out bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={loading} // Disable the button while loading
+            className="w-full px-4 py-3 text-sm font-semibold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={loading}
           >
             {loading ? "Registering..." : "Register Your Account"}
           </button>
@@ -167,7 +172,7 @@ const Register = () => {
             Already have an account?{" "}
             <Link
               to="/login"
-              className="font-semibold text-blue-600 transition-colors duration-200 hover:text-blue-700"
+              className="font-semibold text-blue-600 hover:text-blue-700"
             >
               Login
             </Link>
