@@ -18,7 +18,7 @@ const ProfileInfo = () => {
     // Fetch profile data from backend when the component mounts
     const fetchProfile = async () => {
       try {
-        const response = await fetch("/api/profile"); // Replace with actual API endpoint
+        const response = await fetch("https://localhost:44377/api/users/Login"); // Replace with actual API endpoint
         const data = await response.json();
         setProfileInfo(data);
       } catch (error) {
