@@ -7,18 +7,17 @@ const ProfileInfo = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [profileInfo, setProfileInfo] = useState({
-    fullName: "Ronald Richards",
-    email: "RonaldRich@example.com",
-    phone: "(219) 555-0114",
-    location: "California",
-    bio: "Hi 👋, I'm Ronald, a passionate UX designer with 10 years of experience in creating intuitive and user-centered digital experiences.",
+    fullName: "",
+    email: "",
+    phone: "",
+    location: "",
+    bio: "",
   });
 
   useEffect(() => {
-    // Fetch profile data from backend when the component mounts
     const fetchProfile = async () => {
       try {
-        const response = await fetch("https://localhost:44377/api/users/Login"); // Replace with actual API endpoint
+        const response = await fetch("https://localhost:44377/api/users/Login");
         const data = await response.json();
         setProfileInfo(data);
       } catch (error) {
