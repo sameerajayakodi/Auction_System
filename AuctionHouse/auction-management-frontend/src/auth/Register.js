@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +9,8 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState(false);
   const [registrationError, setRegistrationError] = useState("");
+
+  const navigate = useNavigate(); // useNavigate hook for redirection
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,8 +51,8 @@ const Register = () => {
         );
       }
 
-      // Optionally redirect to the login page after successful registration
-      // e.g., navigate("/login");
+      // Redirect to the login page after successful registration
+      navigate("/login");
 
       // Reset the form after successful registration
       setEmail("");
