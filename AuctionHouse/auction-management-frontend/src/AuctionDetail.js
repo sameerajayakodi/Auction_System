@@ -16,7 +16,9 @@ const AuctionDetail = () => {
   useEffect(() => {
     const fetchAuctionDetails = async () => {
       try {
-        const response = await fetch(`https://your-api-url.com/auctions/${id}`);
+        const response = await fetch(
+          `https://localhost:44377/api/auction/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch auction details");
         }
@@ -31,24 +33,35 @@ const AuctionDetail = () => {
     fetchAuctionDetails();
   }, [id]);
 
+  // Update auction by placing a new bid
   const placeBid = async () => {
     try {
+      const updatedAuctionData = {
+        title: auction.title,
+        description: auction.description,
+        currentBid: Number(bidAmount), // Update with the new bid amount
+        image: auction.image,
+        endDate: auction.endDate,
+        category: auction.category,
+        status: auction.status,
+      };
+
       const response = await fetch(
-        `https://your-api-url.com/auctions/${id}/bid`,
+        `https://localhost:44377/api/auction/UpdateAuction/${id}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ bidAmount: Number(bidAmount) }),
+          body: JSON.stringify(updatedAuctionData),
         }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to place bid");
+        throw new Error("Failed to update auction");
       }
 
-      const updatedAuction = await response.json(); // Assume the backend returns the updated auction data
+      const updatedAuction = await response.json();
       setAuction(updatedAuction);
       setNotification("Bid placed successfully!");
       setBidAmount(""); // Clear the input field
@@ -100,7 +113,7 @@ const AuctionDetail = () => {
           <p className="mb-4 text-2xl font-semibold text-center text-yellow-500">
             ${auction.currentBid}
           </p>
-          <p className="mb-4 text-lg text-center">Ends in: {auction.endTime}</p>
+          <p className="mb-4 text-lg text-center">Ends on: {auction.endDate}</p>
 
           <div className="flex justify-center mb-4">
             <input
