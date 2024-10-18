@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [username, setUsername] = useState(""); // New state for username
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -10,7 +11,7 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [registrationError, setRegistrationError] = useState("");
 
-  const navigate = useNavigate(); // useNavigate hook for redirection
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,8 +27,7 @@ const Register = () => {
     setRegistrationError("");
 
     try {
-      // Log the data to ensure it's correct before sending
-      console.log("Data to be sent:", { email, phone, password });
+      console.log("Data to be sent:", { username, email, phone, password });
 
       const response = await fetch(
         "https://localhost:44377/api/users/CreateUser",
@@ -37,6 +37,7 @@ const Register = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            username, // Send username to the backend
             email,
             phone,
             password,
@@ -45,16 +46,15 @@ const Register = () => {
       );
 
       if (!response.ok) {
-        const errorResponse = await response.text(); // Optional: read the response body
+        const errorResponse = await response.text();
         throw new Error(
           errorResponse || "Registration failed. Please try again."
         );
       }
 
-      // Redirect to the login page after successful registration
       navigate("/login");
 
-      // Reset the form after successful registration
+      setUsername(""); // Reset username
       setEmail("");
       setPhone("");
       setPassword("");
@@ -79,6 +79,25 @@ const Register = () => {
         </h2>
 
         <form onSubmit={handleSubmit}>
+          {/* New Username Input */}
+          <div className="mb-6">
+            <label
+              htmlFor="username"
+              className="block mb-2 text-sm font-medium text-gray-700"
+            >
+              Username
+            </label>
+            <input
+              id="username"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full px-4 py-3 text-sm text-gray-700 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Choose a username"
+              required
+            />
+          </div>
+
           <div className="mb-6">
             <label
               htmlFor="email"
