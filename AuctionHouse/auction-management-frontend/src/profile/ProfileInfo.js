@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import ConfirmationModal from "../components/ConfirmationModal";
 import profile from "../images/1 (5).jpg"; // Profile photo path
 import cover from "../images/registerImage.jpg"; // Cover photo path
-import { UserContext } from "./UserContext"; // Import UserContext
+import { UserContext } from "../auth/UserContext"; // Import UserContext
 
 const ProfileInfo = () => {
   const { user } = useContext(UserContext); // Access user from UserContext
