@@ -13,6 +13,7 @@ import AuctionDetail from "./AuctionDetail";
 import AuctionListing from "./AuctionListing";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
+import { UserProvider } from "./auth/UserContext"; // Import the context provider
 import Navbar from "./components/Navbar";
 import Home from "./Home";
 import History from "./profile/History";
@@ -20,7 +21,6 @@ import Password from "./profile/Password";
 import Payment from "./profile/Payment";
 import Profile from "./profile/Profile";
 import ProfileInfo from "./profile/ProfileInfo";
-import { UserProvider } from "./profile/UserContext"; // Import the context provider
 
 function App() {
   return (
