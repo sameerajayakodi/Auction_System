@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
+import { UserContext } from "../auth/UserContext"; // Import UserContext
 import ConfirmationModal from "../components/ConfirmationModal";
 import profile from "../images/1 (5).jpg"; // Profile photo path
 import cover from "../images/registerImage.jpg"; // Cover photo path
-import { UserContext } from "../auth/UserContext"; // Import UserContext
 
 const ProfileInfo = () => {
   const { user } = useContext(UserContext); // Access user from UserContext
@@ -13,7 +13,7 @@ const ProfileInfo = () => {
     email: user?.email || "",
     phone: user?.phone || "",
     location: user?.location || "",
-    bio: user?.bio || "",
+    address: user?.address || "", // Changed from bio to address
   });
 
   const handleEditClick = () => {
@@ -30,7 +30,10 @@ const ProfileInfo = () => {
 
   const handleModalConfirm = async () => {
     try {
-      const response = await fetch("/api/profile", {
+      const userId = user?.id; // Get user ID from the context
+      const apiUrl = `https://localhost:44377/api/users/UpdateUser/${userId}`; // API endpoint with user ID
+
+      const response = await fetch(apiUrl, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -59,9 +62,9 @@ const ProfileInfo = () => {
   };
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <h2 className="mb-2 text-2xl font-bold">Profile Information</h2>
-      <div className="p-6 bg-white border-2 ">
+      <div className="p-6 bg-white border-2">
         <div className="relative mb-2">
           <img
             src={cover}
@@ -121,49 +124,50 @@ const ProfileInfo = () => {
               readOnly={!isEditing}
             />
           </div>
+          <div className="col-span-2">
+            <label className="text-gray-700">Address</label>
+            <textarea
+              name="address"
+              value={profileInfo.address}
+              onChange={handleChange}
+              className="w-full p-2 mt-1 border-2"
+              readOnly={!isEditing}
+            />
+          </div>
         </div>
-        <div className="mt-6">
-          <label className="text-gray-700">Bio</label>
-          <textarea
-            name="bio"
-            value={profileInfo.bio}
-            onChange={handleChange}
-            className="w-full p-2 mt-1 border-2"
-            readOnly={!isEditing}
-          />
-        </div>
-        <div className="flex justify-end mt-6 space-x-4">
-          {isEditing ? (
+        <div className="flex justify-end mt-4">
+          {!isEditing ? (
+            <button
+              className="px-4 py-2 mr-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
+              onClick={handleEditClick}
+            >
+              Edit
+            </button>
+          ) : (
             <>
               <button
+                className="px-4 py-2 mr-2 text-white bg-green-500 rounded-md hover:bg-green-600"
                 onClick={handleSaveClick}
-                className="px-4 py-2 text-white bg-blue-500 rounded-md"
               >
                 Save
               </button>
               <button
+                className="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600"
                 onClick={handleCancelClick}
-                className="px-4 py-2 text-white bg-gray-500 rounded-md"
               >
                 Cancel
               </button>
             </>
-          ) : (
-            <button
-              onClick={handleEditClick}
-              className="px-4 py-2 text-white bg-gray-600 rounded-md hover:bg-gray-900"
-            >
-              Edit
-            </button>
           )}
         </div>
       </div>
 
-      <ConfirmationModal
-        isOpen={isModalOpen}
-        onClose={handleModalClose}
-        onConfirm={handleModalConfirm}
-      />
+      {isModalOpen && (
+        <ConfirmationModal
+          onConfirm={handleModalConfirm}
+          onClose={handleModalClose}
+        />
+      )}
     </div>
   );
 };
