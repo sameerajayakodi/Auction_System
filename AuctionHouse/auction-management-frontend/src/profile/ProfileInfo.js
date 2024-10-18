@@ -1,32 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import ConfirmationModal from "../components/ConfirmationModal";
-import profile from "../images/1 (5).jpg"; // Correct profile image path
-import cover from "../images/registerImage.jpg"; // Correct cover image path
+import profile from "../images/1 (5).jpg"; // Profile photo path
+import cover from "../images/registerImage.jpg"; // Cover photo path
+import { UserContext } from "./UserContext"; // Import UserContext
 
 const ProfileInfo = () => {
+  const { user } = useContext(UserContext); // Access user from UserContext
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [profileInfo, setProfileInfo] = useState({
-    fullName: "",
-    email: "",
-    phone: "",
-    location: "",
-    bio: "",
+    fullName: user?.fullName || "", // Use user data from context
+    email: user?.email || "",
+    phone: user?.phone || "",
+    location: user?.location || "",
+    bio: user?.bio || "",
   });
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await fetch("https://localhost:44377/api/users/Login");
-        const data = await response.json();
-        setProfileInfo(data);
-      } catch (error) {
-        console.error("Failed to fetch profile data:", error);
-      }
-    };
-
-    fetchProfile();
-  }, []);
 
   const handleEditClick = () => {
     setIsEditing(true);
@@ -42,7 +30,6 @@ const ProfileInfo = () => {
 
   const handleModalConfirm = async () => {
     try {
-      // Save updated profile info to backend (replace API endpoint with the actual one)
       const response = await fetch("/api/profile", {
         method: "PUT",
         headers: {
@@ -52,10 +39,8 @@ const ProfileInfo = () => {
       });
 
       if (response.ok) {
-        // Handle success (e.g., show a success message)
         setIsEditing(false);
       } else {
-        // Handle failure (e.g., show an error message)
         console.error("Failed to save profile data");
       }
     } catch (error) {
@@ -79,13 +64,13 @@ const ProfileInfo = () => {
       <div className="p-6 bg-white border-2 ">
         <div className="relative mb-2">
           <img
-            src={cover} // Cover photo
+            src={cover}
             alt="Cover"
             className="object-cover w-full h-32 rounded-t-lg"
           />
           <div className="absolute bottom-0 left-4">
             <img
-              src={profile} // Profile photo
+              src={profile}
               alt="Profile"
               className="w-24 h-24 border-4 border-white rounded-full"
             />
