@@ -14,7 +14,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const nextAuctionDate = new Date("2024-10-22T00:00:00"); // Replace with your auction date
+    const nextAuctionDate = new Date("2024-10-30T00:00:00"); // Replace with your auction date
 
     const interval = setInterval(() => {
       const now = new Date();
