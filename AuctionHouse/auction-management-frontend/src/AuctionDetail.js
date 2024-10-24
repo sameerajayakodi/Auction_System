@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ConfirmationModal from "../src/components/ConfirmationModal"; // Import the modal
-import Notification from "../src/components/Notification"; // Import the notification component
+import ConfirmationModal from "../src/components/ConfirmationModal";
+import Notification from "../src/components/Notification";
+import { UserContext } from "./auth/UserContext"; // Import UserContext
 import BidHistory from "./BidHistory";
-import ChairImage from "./images/yellowChair.jpg"; // Placeholder image if needed
+import ChairImage from "./images/yellowChair.jpg";
 
 const AuctionDetail = () => {
   const { id } = useParams();
+  const { user } = useContext(UserContext); // Get the user from context
   const [auction, setAuction] = useState(null);
   const [bidAmount, setBidAmount] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
-  const [notification, setNotification] = useState(""); // Notification state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [notification, setNotification] = useState("");
 
-  // Fetch auction details from the backend
   useEffect(() => {
     const fetchAuctionDetails = async () => {
       try {
@@ -33,38 +34,32 @@ const AuctionDetail = () => {
     fetchAuctionDetails();
   }, [id]);
 
-  // Update auction by placing a new bid
   const placeBid = async () => {
     try {
-      const updatedAuctionData = {
-        title: auction.title,
-        description: auction.description,
-        currentBid: Number(bidAmount), // Update with the new bid amount
-        image: auction.image,
-        endDate: auction.endDate,
-        category: auction.category,
-        status: auction.status,
+      const bidData = {
+        auctionId: auction.id,
+        userId: user.id, // Use user ID from context
+        amount: Number(bidAmount),
+        timestamp: new Date().toISOString(),
       };
 
       const response = await fetch(
-        `https://localhost:44377/api/auction/UpdateAuction/${id}`,
+        `https://localhost:44377/api/Bids/CreateBid`,
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(updatedAuctionData),
+          body: JSON.stringify(bidData),
         }
       );
 
       if (!response.ok) {
-        throw new Error("Failed to update auction");
+        throw new Error("Failed to place bid");
       }
 
-      const updatedAuction = await response.json();
-      setAuction(updatedAuction);
       setNotification("Bid placed successfully!");
-      setBidAmount(""); // Clear the input field
+      setBidAmount("");
     } catch (error) {
       console.error(error);
       setNotification("Failed to place bid. Please try again.");
@@ -72,20 +67,20 @@ const AuctionDetail = () => {
   };
 
   const handlePlaceBid = () => {
-    setIsModalOpen(true); // Open modal when the "Place Bid" button is clicked
+    setIsModalOpen(true);
   };
 
   const handleConfirmBid = () => {
-    setIsModalOpen(false); // Close modal after confirmation
-    placeBid(); // Proceed with placing the bid
+    setIsModalOpen(false);
+    placeBid();
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false); // Close modal without placing bid
+    setIsModalOpen(false);
   };
 
   const handleNotificationClose = () => {
-    setNotification(""); // Close notification
+    setNotification("");
   };
 
   if (!auction) return <div>Loading...</div>;
@@ -93,16 +88,14 @@ const AuctionDetail = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-gray-100 to-gray-300 md:w-screen">
       <div className="flex flex-col h-full bg-white rounded-none shadow-2xl md:grid md:grid-cols-2 md:h-screen">
-        {/* Top Section - Auction Image */}
         <div className="w-full md:h-full">
           <img
-            src={auction.image || ChairImage} // Use placeholder image if auction image is not available
+            src={auction.image || ChairImage}
             alt={auction.title}
             className="object-cover w-full h-full"
           />
         </div>
 
-        {/* Bottom Section - Auction Details */}
         <div className="flex flex-col justify-center w-2/3 p-6 bg-white lg:ml-auto lg:mr-auto ">
           <h2 className="mb-4 text-3xl font-bold text-center text-gray-800">
             {auction.title}
@@ -147,14 +140,12 @@ const AuctionDetail = () => {
         </div>
       </div>
 
-      {/* Confirmation Modal */}
       <ConfirmationModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         onConfirm={handleConfirmBid}
       />
 
-      {/* Notification */}
       {notification && (
         <Notification
           message={notification}
