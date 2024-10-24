@@ -15,23 +15,19 @@ const AuctionDetail = () => {
   const [notification, setNotification] = useState("");
 
   useEffect(() => {
-    const fetchAuctionDetails = async () => {
-      try {
-        const response = await fetch(
-          `https://localhost:44377/api/auction/${id}`
-        );
-        if (!response.ok) {
-          throw new Error("Failed to fetch auction details");
-        }
-        const data = await response.json();
-        setAuction(data);
-      } catch (error) {
-        console.error(error);
-        setNotification("Failed to load auction details.");
-      }
+    // Dummy auction data
+    const dummyAuction = {
+      id: "1",
+      title: "Modern Yellow Chair",
+      description:
+        "A stylish and comfortable yellow chair, perfect for any room.",
+      currentBid: 150.0,
+      endDate: "2024-11-01T23:59:59",
+      image: ChairImage,
     };
 
-    fetchAuctionDetails();
+    // Set the dummy auction data
+    setAuction(dummyAuction);
   }, [id]);
 
   const placeBid = async () => {
@@ -43,21 +39,8 @@ const AuctionDetail = () => {
         timestamp: new Date().toISOString(),
       };
 
-      const response = await fetch(
-        `https://localhost:44377/api/Bids/CreateBid`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(bidData),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to place bid");
-      }
-
+      // Simulate successful bid placement
+      console.log("Bid placed:", bidData);
       setNotification("Bid placed successfully!");
       setBidAmount("");
     } catch (error) {
@@ -124,15 +107,6 @@ const AuctionDetail = () => {
           >
             Place Bid
           </button>
-
-          <div className="flex justify-center mb-4 space-x-4">
-            <button className="w-1/2 px-4 py-2 text-white bg-indigo-600 rounded-lg shadow-md hover:bg-indigo-700">
-              Add to Cart
-            </button>
-            <button className="w-1/2 px-4 py-2 text-white bg-gray-400 rounded-lg shadow-md hover:bg-gray-500">
-              Add to Wishlist
-            </button>
-          </div>
 
           <div className="mt-6">
             <BidHistory auctionId={id} />
