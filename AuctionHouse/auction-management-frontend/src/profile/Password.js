@@ -1,8 +1,10 @@
-import axios from "axios"; // Assuming you're using axios for API calls
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../auth/UserContext"; // Make sure to import your UserContext
 import ConfirmationModal from "../components/ConfirmationModal";
 
 const Password = () => {
+  const { userId } = useContext(UserContext); // Use context to get user ID
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -35,12 +37,12 @@ const Password = () => {
     setLoading(true);
 
     try {
-      // Replace the URL with your actual backend API endpoint
       const response = await axios.post(
-        "https://api.example.com/update-password",
+        "https://localhost:44377/api/users/UpdatePassword",
         {
-          currentPassword,
-          newPassword,
+          id: userId, // Use the userId from context
+          password: currentPassword,
+          newPasswd: newPassword,
         }
       );
 
