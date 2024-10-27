@@ -17,7 +17,7 @@ const AuctionListing = () => {
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Fetch auction data from backend API
+ 
   useEffect(() => {
     const fetchAuctions = async () => {
       try {
@@ -32,7 +32,7 @@ const AuctionListing = () => {
     fetchAuctions();
   }, []);
 
-  // Filter auctions based on filters and search input
+ 
   const filteredAuctions = auctions
     .filter((auction) =>
       auction.title.toLowerCase().includes(filter.toLowerCase())
@@ -55,20 +55,20 @@ const AuctionListing = () => {
       } else if (sortOption === "Price: High to Low") {
         return b.currentBid - a.currentBid;
       } else {
-        return 0; // Relevance, or default sorting (no changes)
+        return 0; 
       }
     });
 
-  // Handle filter application from the sidebar
+
   const handleApplyFilters = (filters) => {
     setAppliedFilters(filters);
   };
 
   return (
     <div>
-      {/* Top Bar */}
+   
       <div className="container mx-auto lg:px-20 sm:px-6">
-        {/* Header */}
+   
         <div className="flex items-start justify-center py-6">
           <div className="relative flex">
             <input
@@ -79,7 +79,7 @@ const AuctionListing = () => {
               className="p-4 text-sm border border-gray-300 rounded-full shadow-sm w-96 focus:outline-none focus:ring-2 focus:ring-slate-800"
             />
             <span className="absolute right-0 p-4 text-gray-600 bg-gray-200 border-t border-b border-gray-200 rounded-full">
-              {/* Inline SVG for search icon */}
+           
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
@@ -96,7 +96,6 @@ const AuctionListing = () => {
           </div>
         </div>
 
-        {/* Filter and Sort Section */}
         <div className="flex items-center justify-between py-2 mb-4">
           <button
             onClick={() => setIsSidebarOpen(true)}
@@ -119,8 +118,8 @@ const AuctionListing = () => {
           </div>
         </div>
 
-        {/* Auction Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
           {filteredAuctions.length > 0 ? (
             filteredAuctions.map((auction) => (
               <Link
@@ -136,7 +135,7 @@ const AuctionListing = () => {
           )}
         </div>
 
-        {/* Filter Sidebar */}
+ 
         {isSidebarOpen && (
           <FilterSidebar
             onApplyFilters={handleApplyFilters}
