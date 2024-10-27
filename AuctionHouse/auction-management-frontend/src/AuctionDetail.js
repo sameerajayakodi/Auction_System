@@ -2,20 +2,20 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ConfirmationModal from "../src/components/ConfirmationModal";
 import Notification from "../src/components/Notification";
-import { UserContext } from "./auth/UserContext"; // Import UserContext
+import { UserContext } from "./auth/UserContext";
 import BidHistory from "./BidHistory";
 import ChairImage from "./images/yellowChair.jpg";
 
 const AuctionDetail = () => {
   const { id } = useParams();
-  const { user } = useContext(UserContext); // Get the user from context
+  const { user } = useContext(UserContext);
   const [auction, setAuction] = useState(null);
   const [bidAmount, setBidAmount] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [notification, setNotification] = useState("");
 
   useEffect(() => {
-    // Dummy auction data
+   
     const dummyAuction = {
       id: "1",
       title: "Modern Yellow Chair",
@@ -26,7 +26,7 @@ const AuctionDetail = () => {
       image: ChairImage,
     };
 
-    // Set the dummy auction data
+   
     setAuction(dummyAuction);
   }, [id]);
 
@@ -34,12 +34,12 @@ const AuctionDetail = () => {
     try {
       const bidData = {
         auctionId: auction.id,
-        userId: user.id, // Use user ID from context
+        userId: user.id, 
         amount: Number(bidAmount),
         timestamp: new Date().toISOString(),
       };
 
-      // Simulate successful bid placement
+   
       console.log("Bid placed:", bidData);
       setNotification("Bid placed successfully!");
       setBidAmount("");
@@ -86,7 +86,7 @@ const AuctionDetail = () => {
           <p className="mb-4 text-center text-gray-600">
             {auction.description}
           </p>
-          <p className="mb-4 text-2xl font-semibold text-center text-yellow-500">
+          <p className="mb-4 text-3xl font-semibold text-center text-green-500">
             ${auction.currentBid}
           </p>
           <p className="mb-4 text-lg text-center">Ends on: {auction.endDate}</p>
@@ -103,7 +103,7 @@ const AuctionDetail = () => {
 
           <button
             onClick={handlePlaceBid}
-            className="w-full px-4 py-2 mb-4 text-white bg-yellow-500 rounded-lg shadow-md hover:bg-yellow-600"
+            className="w-full px-4 py-2 mb-4 text-white bg-gray-800 rounded-lg shadow-md hover:bg-gray-800"
           >
             Place Bid
           </button>
