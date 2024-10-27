@@ -13,7 +13,6 @@ const AddAuctionModal = ({ isOpen, onClose, auction, saveAuctionData }) => {
   const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const apiEndpoint = "https://localhost:44377/api/auction";
 
   useEffect(() => {
     if (auction) {
@@ -40,7 +39,7 @@ const AddAuctionModal = ({ isOpen, onClose, auction, saveAuctionData }) => {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result); // Convert the file to a base64 URL
+        setImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
@@ -83,8 +82,12 @@ const AddAuctionModal = ({ isOpen, onClose, auction, saveAuctionData }) => {
       status,
     };
 
+    const endpoint = auction
+      ? `https://localhost:44377/api/auction/UpdateAuction/${auction.id}`
+      : "https://localhost:44377/api/auction";
+
     try {
-      const response = await fetch(apiEndpoint, {
+      const response = await fetch(endpoint, {
         method: auction ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
@@ -103,8 +106,6 @@ const AddAuctionModal = ({ isOpen, onClose, auction, saveAuctionData }) => {
       }
 
       const result = await response.json();
-      console.log("Auction saved successfully:", result);
-
       saveAuctionData(result);
       onClose();
     } catch (error) {
@@ -241,7 +242,13 @@ const AddAuctionModal = ({ isOpen, onClose, auction, saveAuctionData }) => {
               className="px-6 py-2 text-white bg-blue-500 rounded-lg"
               disabled={loading}
             >
-              {loading ? "Saving..." : "Save"}
+              {loading
+                ? auction
+                  ? "Updating..."
+                  : "Saving..."
+                : auction
+                ? "Update"
+                : "Save"}
             </button>
             <button
               type="button"

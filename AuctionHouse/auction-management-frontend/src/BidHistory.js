@@ -10,7 +10,7 @@ const BidHistory = ({ auctionId }) => {
     const fetchBids = async () => {
       try {
         const response = await axios.get(
-          `/api/Bids/getBidsForAuction/${auctionId}`
+          `https://localhost:44377/api/Bids/getBidsForAuction/${auctionId}`
         );
         setBids(response.data);
         setLoading(false);
