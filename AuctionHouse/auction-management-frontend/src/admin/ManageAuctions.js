@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import AddAuctionModal from "./AddAuctionModal"; // Import the modal
-import DeleteConfirmationModal from "./DeleteConfirmationModal"; // Import the delete confirmation modal
+import AddAuctionModal from "./AddAuctionModal";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 const ManageAuctions = () => {
   const [auctions, setAuctions] = useState([]);
@@ -9,14 +9,13 @@ const ManageAuctions = () => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [deletingIndex, setDeletingIndex] = useState(null);
 
-  // Fetch auctions from the backend API on component mount
   useEffect(() => {
     fetchAuctions();
   }, []);
 
   const fetchAuctions = async () => {
     try {
-      const response = await fetch("https://localhost:44377/api/auction"); // Updated API endpoint
+      const response = await fetch("https://localhost:44377/api/auction");
       const data = await response.json();
       setAuctions(data);
     } catch (error) {
@@ -29,9 +28,8 @@ const ManageAuctions = () => {
       // Update existing auction
       try {
         await fetch(
-          `https://localhost:44377/api/auction/${auctions[editingIndex].id}`,
+          `https://localhost:44377/api/auction/UpdateAuction/${auctions[editingIndex].id}`,
           {
-            // Updated API endpoint
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -39,7 +37,7 @@ const ManageAuctions = () => {
             body: JSON.stringify(newAuction),
           }
         );
-        fetchAuctions(); // Refresh the auctions
+        fetchAuctions();
       } catch (error) {
         console.error("Error updating auction:", error);
       }
@@ -47,19 +45,19 @@ const ManageAuctions = () => {
       // Add a new auction
       try {
         await fetch("https://localhost:44377/api/auction", {
-          // Updated API endpoint
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(newAuction),
         });
-        fetchAuctions(); // Refresh the auctions
+        fetchAuctions();
       } catch (error) {
         console.error("Error adding auction:", error);
       }
     }
     setIsModalOpen(false);
+    setEditingIndex(null); // Reset editing index after save
   };
 
   const handleEditAuction = (index) => {
@@ -75,13 +73,12 @@ const ManageAuctions = () => {
   const confirmDeleteAuction = async () => {
     try {
       await fetch(
-        `https://localhost:44377/api/auction/${auctions[deletingIndex].id}`,
+        `https://localhost:44377/api/auction/DeleteAuction/${auctions[deletingIndex].id}`,
         {
-          // Updated API endpoint
           method: "DELETE",
         }
       );
-      fetchAuctions(); // Refresh the auctions
+      fetchAuctions();
     } catch (error) {
       console.error("Error deleting auction:", error);
     }
@@ -98,7 +95,10 @@ const ManageAuctions = () => {
     <div className="p-10 bg-white rounded-lg shadow-lg">
       <h1 className="mb-6 text-3xl font-bold">Manage Auctions</h1>
       <button
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          setEditingIndex(null); // Reset editing index for new auction
+          setIsModalOpen(true);
+        }}
         className="px-6 py-2 mb-6 font-semibold text-white bg-blue-600 rounded hover:bg-blue-700"
       >
         Add Auction
@@ -107,14 +107,13 @@ const ManageAuctions = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onSave={handleAddAuction}
-        auction={editingIndex !== null ? auctions[editingIndex] : null}
+        auction={editingIndex !== null ? auctions[editingIndex] : null} // Pass auction details if editing
       />
       <DeleteConfirmationModal
         isOpen={isDeleteModalOpen}
         onClose={cancelDeleteAuction}
         onConfirm={confirmDeleteAuction}
       />
-      {/* Display the auctions */}
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="text-white bg-gray-800">
           <tr>

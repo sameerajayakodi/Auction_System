@@ -65,9 +65,9 @@ const AuctionListing = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-200 via-purple-200 to-pink-200 ">
+    <div className="">
       {/* Top Bar */}
-      <div className="container mx-auto lg:px-20 sm:px-6 ">
+      <div className="container mx-auto lg:px-20 sm:px-6">
         {/* Header */}
         <div className="flex items-start justify-center py-6">
           <div className="relative flex">
@@ -78,7 +78,7 @@ const AuctionListing = () => {
               onChange={(e) => setFilter(e.target.value)}
               className="p-4 text-sm border border-gray-300 rounded-full shadow-sm w-96 focus:outline-none focus:ring-2 focus:ring-slate-800"
             />
-            <span className="absolute right-0 p-4 text-gray-600 bg-gray-200 border-t border-b border-gray-200 rounded-full ">
+            <span className="absolute right-0 p-4 text-gray-600 bg-gray-200 border-t border-b border-gray-200 rounded-full">
               {/* Inline SVG for search icon */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ const AuctionListing = () => {
         </div>
 
         {/* Filter and Sort Section */}
-        <div className="flex items-center justify-between py-2 mb-4 ">
+        <div className="flex items-center justify-between py-2 mb-4">
           <button
             onClick={() => setIsSidebarOpen(true)}
             className="flex items-center px-2 py-1 text-sm text-gray-500 bg-transparent border-2"

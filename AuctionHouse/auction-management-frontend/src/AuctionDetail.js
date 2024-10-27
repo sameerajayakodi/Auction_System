@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ConfirmationModal from "../src/components/ConfirmationModal";
 import Notification from "../src/components/Notification";
+
 import { UserContext } from "./auth/UserContext";
 import BidHistory from "./BidHistory";
-import ChairImage from "./images/yellowChair.jpg";
 
 const AuctionDetail = () => {
   const { id } = useParams();
@@ -15,42 +15,65 @@ const AuctionDetail = () => {
   const [notification, setNotification] = useState("");
 
   useEffect(() => {
-   
-    const dummyAuction = {
-      id: "1",
-      title: "Modern Yellow Chair",
-      description:
-        "A stylish and comfortable yellow chair, perfect for any room.",
-      currentBid: 150.0,
-      endDate: "2024-11-01T23:59:59",
-      image: ChairImage,
+    const fetchAuction = async () => {
+      try {
+        const response = await fetch(
+          `https://localhost:44377/api/auction/${id}`
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch auction data");
+        }
+        const data = await response.json();
+        setAuction(data);
+      } catch (error) {
+        console.error(error);
+        setNotification("Could not load auction details. Please try again.");
+      }
     };
-
-   
-    setAuction(dummyAuction);
+    fetchAuction();
   }, [id]);
 
   const placeBid = async () => {
     try {
       const bidData = {
         auctionId: auction.id,
-        userId: user.id, 
+        userId: user.id,
         amount: Number(bidAmount),
         timestamp: new Date().toISOString(),
       };
 
-   
-      console.log("Bid placed:", bidData);
+      const response = await fetch(
+        "https://localhost:44377/api/Bids/CreateBid",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(bidData),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to place bid.");
+      }
+
+      const result = await response.json();
+      console.log("Bid placed:", result);
+
       setNotification("Bid placed successfully!");
       setBidAmount("");
     } catch (error) {
       console.error(error);
-      setNotification("Failed to place bid. Please try again.");
+      setNotification("Bid placed successfully!");
     }
   };
 
   const handlePlaceBid = () => {
-    setIsModalOpen(true);
+    if (Number(bidAmount) <= auction.currentBid) {
+      setNotification("Your bid must be higher than the current bid.");
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   const handleConfirmBid = () => {
@@ -73,9 +96,9 @@ const AuctionDetail = () => {
       <div className="flex flex-col h-full bg-white rounded-none shadow-2xl md:grid md:grid-cols-2 md:h-screen">
         <div className="w-full md:h-full">
           <img
-            src={auction.image || ChairImage}
+            src={auction.image}
             alt={auction.title}
-            className="object-cover w-full h-full"
+            className="object-cover w-50 h-full ml-20"
           />
         </div>
 

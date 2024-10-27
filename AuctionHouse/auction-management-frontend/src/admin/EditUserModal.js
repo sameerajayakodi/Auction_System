@@ -4,10 +4,20 @@ import Modal from "react-modal";
 Modal.setAppElement("#root");
 
 const EditUserModal = ({ isOpen, onClose, user, onSave }) => {
-  const [formData, setFormData] = useState(user);
+  const [formData, setFormData] = useState({
+    name: "", // Initialize name here
+    email: "",
+    role: "User", // Default role, change if needed
+  });
 
   useEffect(() => {
-    setFormData(user);
+    if (user) {
+      setFormData({
+        name: user.fullName || "", // Use fullName from the user object
+        email: user.email || "",
+        role: user.role || "User", // Ensure there's a role set
+      });
+    }
   }, [user]);
 
   const handleChange = (e) => {
@@ -39,7 +49,7 @@ const EditUserModal = ({ isOpen, onClose, user, onSave }) => {
               type="text"
               id="name"
               name="name"
-              value={formData.name}
+              value={formData.name} // Bind the name here
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg"
               required
