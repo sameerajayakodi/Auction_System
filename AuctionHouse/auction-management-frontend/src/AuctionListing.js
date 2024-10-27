@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AuctionCard from "./AuctionCard";
 import FilterSidebar from "./FilterSidebar";
 
-// AuctionListing Component
+
 const AuctionListing = () => {
   const [auctions, setAuctions] = useState([]);
   const [filter, setFilter] = useState("");
