@@ -65,7 +65,7 @@ const AuctionListing = () => {
   };
 
   return (
-    <div className="">
+    <div>
       {/* Top Bar */}
       <div className="container mx-auto lg:px-20 sm:px-6">
         {/* Header */}
