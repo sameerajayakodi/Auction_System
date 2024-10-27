@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import { FaArrowRight, FaBell, FaList, FaLock } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaBell,
+  FaFacebook,
+  FaInstagram,
+  FaList,
+  FaLock,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
-import background from "./images//background.jpg";
-import about from "./images/about.png";
-
+import background from "./images/background.jpg";
+import auction1 from "./images/item (10).jpg";
+import auction2 from "./images/item (11).jpg";
+import auction3 from "./images/item (12).jpg";
+import auction4 from "./images/item (16).jpg";
 const Home = () => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -14,7 +25,7 @@ const Home = () => {
   });
 
   useEffect(() => {
-    const nextAuctionDate = new Date("2024-10-30T00:00:00"); // Replace with your auction date
+    const nextAuctionDate = new Date("2024-10-30T00:00:00"); 
 
     const interval = setInterval(() => {
       const now = new Date();
@@ -39,7 +50,7 @@ const Home = () => {
 
   return (
     <>
-      {/* Hero Section - Full Background Image */}
+     
       <div className="relative h-screen">
         <div className="relative h-screen">
           <div
@@ -62,11 +73,11 @@ const Home = () => {
             >
               Explore Auctions
               <FaArrowRight className="ml-2" />{" "}
-              {/* Adding right arrow icon with margin */}
+            
             </Link>
           </div>
         </div>
-        {/* Countdown Timer */}
+      
         <div className="absolute right-0 flex flex-col items-center p-6 py-8 text-center transform -translate-x-1/2 bg-white shadow-2xl rounded-b-3xl top-2 ">
           <span className="text-2xl font-bold text-gray-900">
             Next Auction Starts In
@@ -78,39 +89,39 @@ const Home = () => {
         </div>
       </div>
 
-      {/* =================================================================================== */}
-      <div className="flex items-center justify-center px-6 py-16 text-center bg-gradient-to-r from-blue-50 to-indigo-50 ">
+     
+      <div className="flex items-center justify-center px-6 py-16 text-center">
         <div className="container flex justify-between w-full space-x-4 overflow-x-auto scrolling-touch bg-white rounded-full shadow-xl no-scrollbar">
-          {/* Total Items */}
+         
           <div className="flex flex-col items-center w-1/4 p-4">
             <h3 className="mb-2 text-5xl font-bold ">
-              <CountUp start={0} end={1200} duration={3} />+ {/* Total items */}
+              <CountUp start={0} end={1200} duration={3} />+ 
             </h3>
             <p className="text-lg font-semibold text-gray-700">Total Items</p>
           </div>
 
-          {/* Total Users */}
+        
           <div className="flex flex-col items-center w-1/4 p-4 ">
             <h3 className="mb-2 text-5xl font-bold">
-              <CountUp start={0} end={450} duration={3} />+ {/* Total users */}
+              <CountUp start={0} end={450} duration={3} />+ 
             </h3>
             <p className="text-lg font-semibold text-gray-700">Total Users</p>
           </div>
 
-          {/* Total Auctions */}
+       
           <div className="flex flex-col items-center w-1/4 p-4 ">
             <h3 className="mb-2 text-5xl font-bold">
               <CountUp start={0} end={90} duration={3} />+{" "}
-              {/* Total auctions */}
+            
             </h3>
             <p className="text-lg font-semibold">Total Auctions</p>
           </div>
 
-          {/* Related Auctions */}
+        
           <div className="flex flex-col items-center w-1/4 p-4 ">
             <h3 className="mb-2 text-5xl font-bold ">
               <CountUp start={0} end={50} duration={3} />+{" "}
-              {/* Related auctions */}
+             
             </h3>
             <p className="text-lg font-semibold text-gray-700">
               Featured Auctions
@@ -119,19 +130,19 @@ const Home = () => {
         </div>
       </div>
 
-      {/* =========================================================================================*/}
+     
 
-      <div className="px-6 py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div className="px-6 py-16 bg-white">
         <div className="container mx-auto">
           <h2 className="mb-12 text-5xl font-bold text-center text-gray-800">
             How It Works
           </h2>
           <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3">
-            {/* Step 1 */}
-            <div className="relative p-8 transition duration-300 transform bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl">
+          
+            <div className="relative p-8 ">
               <div className="absolute top-0 p-4 text-white transform -translate-x-1/2 -translate-y-1/2 bg-purple-500 rounded-full shadow-lg left-1/2">
                 <svg
-                  className="w-10 h-10" // Increased icon size
+                  className="w-10 h-10" 
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -150,18 +161,16 @@ const Home = () => {
               </h3>
               <p className="text-lg text-gray-600">
                 {" "}
-                {/* Increased paragraph font size */}
+               
                 Create an account to participate in auctions and track your
                 bids.
               </p>
             </div>
 
-            {/* Step 2 */}
-            <div className="relative p-8 transition duration-300 transform bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl">
+            <div className="relative p-8 bg-white ">
               <div className="absolute top-0 p-4 text-white transform -translate-x-1/2 -translate-y-1/2 bg-pink-500 rounded-full shadow-lg left-1/2">
                 <svg
-                  className="w-10 h-10" // Increased icon size
-                  fill="none"
+                  className="w-10 h-10" 
                   stroke="currentColor"
                   strokeWidth="2"
                   viewBox="0 0 24 24"
@@ -179,17 +188,17 @@ const Home = () => {
               </h3>
               <p className="text-lg text-gray-600">
                 {" "}
-                {/* Increased paragraph font size */}
+               
                 Find auctions that interest you and place your bids in
                 real-time.
               </p>
             </div>
 
-            {/* Step 3 */}
-            <div className="relative p-8 transition duration-300 transform bg-white rounded-lg shadow-lg hover:scale-105 hover:shadow-2xl">
+           
+            <div className="relative p-8 ">
               <div className="absolute top-0 p-4 text-white transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full shadow-lg left-1/2">
                 <svg
-                  className="w-10 h-10" // Increased icon size
+                  className="w-10 h-10" 
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -208,7 +217,7 @@ const Home = () => {
               </h3>
               <p className="text-lg text-gray-600">
                 {" "}
-                {/* Increased paragraph font size */}
+               
                 Win auctions and get notified instantly. Securely pay and
                 receive your items.
               </p>
@@ -217,48 +226,55 @@ const Home = () => {
         </div>
       </div>
 
-      {/* =================================================================================== */}
-      {/* About Section */}
-      <div className="relative py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div className="grid items-center gap-10 px-10 mx-auto max-w-7xl md:grid-cols-2">
-          {/* Text Content */}
-          <div className="flex flex-col justify-center text-center md:text-left">
-            <h2 className="mb-6 text-5xl font-extrabold text-gray-800">
-              About Us
-            </h2>
-            <p className="text-xl leading-relaxed text-gray-700">
-              Auction House is a leading online auction platform where you can
-              find a variety of unique products. From antiques to modern
-              gadgets, we provide a safe and secure way to participate in
-              auctions worldwide.
-            </p>
-          </div>
+     
+     
+      <div className="py-16 bg-gray-800 ">
+        <div className="container mx-auto">
+          <h2 className="mb-10 text-4xl font-bold text-center text-white">
+            Upcoming Auctions
+          </h2>
+          <div className="grid grid-cols-1 gap-4 text-center md:grid-cols-2 lg:grid-cols-4">
+        
 
-          {/* Icon/Image */}
-          <div className="flex justify-center md:justify-end">
             <img
-              src={about}
-              alt="About us illustration"
-              className="w-4/5 h-auto transition-transform duration-500 transform rounded-lg shadow-lg hover:scale-105"
+              src={auction1} 
+              alt="Vintage Car Auction"
+              className="w-full h-full mb-4 rounded-lg"
+            />
+
+
+            <img
+              src={auction2} 
+              alt="Luxury Watch Auction"
+              className="w-full h-full mb-4 rounded-lg"
+            />
+
+          
+            <img
+              src={auction3} 
+              alt="Antique Artifacts Auction"
+              className="w-full h-full mb-4 rounded-lg"
+            />
+
+            <img
+              src={auction4} 
+              alt="Rare Book Auction"
+              className="w-full h-full mb-4 rounded-lg"
             />
           </div>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-100 rounded-full opacity-50 md:w-60 md:h-60"></div>
-        <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-100 rounded-full opacity-50 md:w-60 md:h-60"></div>
       </div>
 
-      <div className="py-16 bg-gradient-to-r from-[#B29CCB] via-[#E0A3C2] to-[#F7D4D3]">
+      <div className="py-16">
         <div className="container px-8 mx-auto">
-          <h2 className="mb-10 text-4xl font-bold text-center text-gray-800">
+          <h2 className="mb-10 text-4xl font-bold text-center text-gray-900">
             Why Choose Us?
           </h2>
           <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3">
-            {/* Card 1 */}
-            <div className="relative p-10 py-20 overflow-hidden bg-white cursor-pointer bg-opacity-60 backdrop-blur-md ">
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-50 opacity-10"></div>
-              <FaList className="mx-auto mb-6 text-5xl font-bold text-indigo-600" />
+          
+            <div className="relative p-10 py-20 overflow-hidden bg-white rounded-lg shadow-lg cursor-pointer hover:shadow-xl">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 opacity-5"></div>
+              <FaList className="mx-auto mb-6 text-4xl text-gray-700" />
               <h3 className="mb-4 text-2xl font-semibold text-gray-800">
                 Wide Selection
               </h3>
@@ -268,10 +284,9 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Card 2 */}
-            <div className="relative p-10 py-20 overflow-hidden bg-white cursor-pointer bg-opacity-60 backdrop-blur-md ">
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-50 opacity-10"></div>
-              <FaLock className="mx-auto mb-6 text-5xl font-bold text-blue-600" />
+            <div className="relative p-10 py-20 overflow-hidden bg-white rounded-lg shadow-lg cursor-pointer hover:shadow-xl">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 opacity-5"></div>
+              <FaLock className="mx-auto mb-6 text-4xl text-gray-700" />
               <h3 className="mb-4 text-2xl font-semibold text-gray-800">
                 Secure Bidding
               </h3>
@@ -281,10 +296,9 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Card 3 */}
-            <div className="relative p-10 py-20 overflow-hidden bg-white cursor-pointer bg-opacity-60 ">
-              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-200 to-gray-50 opacity-10"></div>
-              <FaBell className="mx-auto mb-6 text-5xl font-bold text-green-600" />
+            <div className="relative p-10 py-20 overflow-hidden bg-white rounded-lg shadow-lg cursor-pointer hover:shadow-xl">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-gray-100 to-gray-50 opacity-5"></div>
+              <FaBell className="mx-auto mb-6 text-4xl text-gray-700" />
               <h3 className="mb-4 text-2xl font-semibold text-gray-800">
                 Real-time Updates
               </h3>
@@ -297,14 +311,8 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Features Section */}
-      {/* ...rest of the content */}
-      {/* Testimonials Section */}
 
-      {/* ================================================================================== */}
-
-      {/* ======================================================================================== */}
-      <div className="px-6 py-16 bg-gray-100">
+      <div className="px-6 py-16 bg-gray-200">
         <div className="container mx-auto">
           <h2 className="mb-8 text-4xl font-bold text-center">
             What Our Users Say
@@ -315,20 +323,145 @@ const Home = () => {
                 "Auction House helped me find a rare collectible I was searching
                 for. The bidding process was smooth and secure."
               </p>
-              <h3 className="text-xl font-semibold">John Doe</h3>
+              <h3 className="text-xl font-semibold">Kasun Perera</h3>
             </div>
             <div className="p-8 bg-white rounded-lg shadow-lg">
               <p className="mb-4 italic text-gray-600">
                 "I love the variety of items available. The real-time updates
                 kept me on track with my bids!"
               </p>
-              <h3 className="text-xl font-semibold">Jane Smith</h3>
+              <h3 className="text-xl font-semibold">Nipunika Hettiarachchi</h3>
             </div>
           </div>
         </div>
       </div>
+
+    
+
+ 
+      <div className="py-16 bg-white">
+        <div className="container mx-auto">
+          <h2 className="mb-10 text-4xl font-bold text-center text-gray-800">
+            Frequently Asked Questions
+          </h2>
+          <div className="max-w-3xl mx-auto">
+            <div className="mb-6">
+              <h3 className="text-2xl font-semibold text-gray-800">
+                How do I register for an auction?
+              </h3>
+              <p className="text-lg text-gray-600">
+                To register, simply click on the "Register" button at the top
+                right of the page and fill in your details.
+              </p>
+            </div>
+            <div className="mb-6">
+              <h3 className="text-2xl font-semibold text-gray-800">
+                Is bidding secure on your platform?
+              </h3>
+              <p className="text-lg text-gray-600">
+                Yes, we use state-of-the-art security protocols to ensure that
+                all your transactions are safe.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-2xl font-semibold text-gray-800">
+                What items can I auction?
+              </h3>
+              <p className="text-lg text-gray-600">
+                You can auction almost any item, ranging from antiques to
+                electronics. Make sure it complies with our auction rules.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer className="py-10 mt-auto text-gray-300 bg-gray-900">
+        <div className="container flex flex-col items-center justify-between px-8 mx-auto md:flex-row md:items-start">
+ 
+          <div className="text-center md:text-left md:w-1/2">
+            <h3 className="mb-4 text-lg font-semibold text-white">
+              What is Auction House?
+            </h3>
+            <p className="mb-6">
+              Auction House is a premier platform for buying and selling unique
+              items through competitive auctions. Discover, bid, and win
+              incredible items while enjoying a transparent and engaging auction
+              experience.
+            </p>
+          </div>
+
+          <div className="mt-8 text-center md:text-right md:w-1/2 md:mt-0">
+            <h3 className="mb-4 text-lg font-semibold text-white">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/auctions" className="hover:text-white">
+                  Explore Auctions
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="hover:text-white">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="hover:text-white">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-of-service" className="hover:text-white">
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link to="/help-center" className="hover:text-white">
+                  Help Center
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-white">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+            <div className="flex justify-center mt-6 space-x-4 md:justify-end">
+              <a
+                href="https://facebook.com"
+                className="text-white hover:text-gray-400"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="https://instagram.com"
+                className="text-white hover:text-gray-400"
+              >
+                <FaInstagram />
+              </a>
+              <a
+                href="https://twitter.com"
+                className="text-white hover:text-gray-400"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="https://youtube.com"
+                className="text-white hover:text-gray-400"
+              >
+                <FaYoutube />
+              </a>
+            </div>
+          </div>
+        </div>
+
+      
+        <div className="pt-4 mt-8 text-center text-gray-400 border-t border-gray-700">
+          <p>© 2024 Auction House. All rights reserved.</p>
+        </div>
+      </footer>
     </>
   );
 };
 
 export default Home;
+
