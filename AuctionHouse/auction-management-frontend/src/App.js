@@ -13,7 +13,7 @@ import AuctionDetail from "./AuctionDetail";
 import AuctionListing from "./AuctionListing";
 import Login from "./auth/Login";
 import Register from "./auth/Register";
-import { UserProvider } from "./auth/UserContext"; // Import the context provider
+import { UserProvider } from "./auth/UserContext";
 import Navbar from "./components/Navbar";
 import Home from "./Home";
 import History from "./profile/History";
@@ -26,7 +26,7 @@ function App() {
   return (
     <UserProvider>
       {" "}
-      {/* Wrap the app with UserProvider */}
+     
       <Router>
         <Navbar />
         <div>
